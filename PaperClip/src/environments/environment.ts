@@ -12,5 +12,6 @@ export const environment = {
     projectId: "paper-clip-2d29f",
     storageBucket: "",
     messagingSenderId: "261030326726"
-  }
+  },
+  registryToken: '6131549a-a5f6-4bdc-80d6-cd3fcab88b02'
 };

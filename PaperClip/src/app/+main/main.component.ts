@@ -1,29 +1,30 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { AngularFireAuth } from "angularfire2/auth";
-
-import * as firebase from 'firebase/app';
 import { Subscription } from "rxjs/Subscription";
 
+import * as firebase from 'firebase/app';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
-export class AppComponent {
-  showSignOut = false;
+export class MainComponent implements OnInit {
   private authStateSubscription: Subscription;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, 
+      private router: Router) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.authStateSubscription = this.afAuth.authState.subscribe( (user: firebase.User) => { 
       if (user) {
         // Signin just happen
-        this.showSignOut = true;
+
       } else {
         //Signout just happen
-        this.showSignOut = false;
+        this.router.navigate(["/signin"]);
       }
      });
   }
@@ -35,4 +36,5 @@ export class AppComponent {
   signOut(): void {
     this.afAuth.auth.signOut();
   }
+
 }

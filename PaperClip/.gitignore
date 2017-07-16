@@ -40,3 +40,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/paper-clip-2d29f-firebase-adminsdk-bll3j-f2c4aa5d08.json

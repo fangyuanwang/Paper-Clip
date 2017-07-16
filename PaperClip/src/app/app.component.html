@@ -2,29 +2,16 @@
   Paper Clip
   <span fxFlex></span>
 
-  <!--<button md-icon-button [mdMenuTriggerFor]="signOutMenu">
+  <button ng-if="showSignOut" md-icon-button [mdMenuTriggerFor]="signOutMenu">
     <md-icon>more_vert</md-icon>
   </button>
   <md-menu [overlapTrigger]="false" #signOutMenu="mdMenu">
     <button md-menu-item (click)="signOut()">Sign Out</button>
-  </md-menu>-->
-  <button md-icon-button [mdMenuTriggerFor]="menu">
-    <md-icon>more_vert</md-icon>
-  </button>
-  <md-menu #menu="mdMenu" yPosition="below" [overlapTrigger]="false">
-    <button md-menu-item>
-      <md-icon>dialpad</md-icon>
-      <span>Redial</span>
-    </button>
-    <button md-menu-item disabled>
-      <md-icon>voicemail</md-icon>
-      <span>Check voicemail</span>
-    </button>
-    <button md-menu-item>
-      <md-icon>notifications_off</md-icon>
-      <span>Disable alerts</span>
-    </button>
   </md-menu>
 </md-toolbar>
 
-<router-outlet></router-outlet>
+<div fxLayoutAlign="center center">
+  <div class="container" fxFlex fxFlex.md="960px" fxFlex.gt-md="1100px">
+    <router-outlet></router-outlet>
+  </div>
+</div>
