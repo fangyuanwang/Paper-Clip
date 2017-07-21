@@ -15,6 +15,8 @@ export class SignInComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
+    var loc = window.location.pathname;
+    console.log(loc);
   }
 
   signInWithRosefire(): void {

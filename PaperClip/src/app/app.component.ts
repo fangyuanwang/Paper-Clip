@@ -26,6 +26,8 @@ export class AppComponent {
         this.showSignOut = false;
       }
      });
+    var loc = window.location.pathname;
+    console.log(loc);
   }
 
   ngOnDestroy(): void {
