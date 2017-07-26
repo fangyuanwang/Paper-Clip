@@ -1,10 +1,10 @@
-<md-card>
+<md-card color="accent">
   <md-card-title>
     <h2>Welcome</h2>
   </md-card-title>
   <md-card-content fxLayout="column" fxLayoutAlign="none center">
     <img src="./assets/img/logo1.jpg">
-    <button md-raised-button (click)="signInWithRosefire()">Rose-Hulman Login</button>
+    <button md-raised-button (click)="authService.signInWithRosefire()">Rose-Hulman Login</button>
     <p>In order to start using this app you first need to sign in. You can use Rose-Hulman credentials.</p>
   </md-card-content>
 </md-card>

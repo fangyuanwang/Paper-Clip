@@ -1,12 +1,31 @@
-<md-toolbar color="primary">
-  Paper Clip
+<img src="./assets/img/logo2.jpg" id="logo">
+<md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
+  <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
+  <md-menu [overlapTrigger]="false" #AllMenu="mdMenu">
+    <button md-menu-item>Notes</button>
+    <button md-menu-item>Flashcards</button>
+  </md-menu>
+
+  <button md-button [mdMenuTriggerFor]="MyMenu">My Stuff</button>
+  <md-menu [overlapTrigger]="false" #MyMenu="mdMenu">
+    <button md-menu-item>Notes</button>
+    <button md-menu-item>Flashcards</button>
+  </md-menu>
+
+  <button md-button [mdMenuTriggerFor]="MyFavoriteMenu">My Favorite</button>
+  <md-menu [overlapTrigger]="false" #MyFavoriteMenu="mdMenu">
+    <button md-menu-item>Notes</button>
+    <button md-menu-item>Flashcards</button>
+  </md-menu>
+
   <span fxFlex></span>
 
-  <button ng-if="showSignOut" md-icon-button [mdMenuTriggerFor]="signOutMenu">
+  <button md-icon-button [mdMenuTriggerFor]="signOutMenu">
     <md-icon>more_vert</md-icon>
   </button>
   <md-menu [overlapTrigger]="false" #signOutMenu="mdMenu">
-    <button md-menu-item (click)="signOut()">Sign Out</button>
+    <button md-menu-item>Settings</button>
+    <button md-menu-item (click)="authService.signOut()">Sign Out</button>
   </md-menu>
 </md-toolbar>
 

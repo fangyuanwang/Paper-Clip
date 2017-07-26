@@ -3,6 +3,7 @@ import 'rosefire';
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from "@angular/router";
 import { environment } from "environments/environment";
+import { AuthService } from "app/services/auth.service";
 
 
 @Component({
@@ -12,26 +13,12 @@ import { environment } from "environments/environment";
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
     var loc = window.location.pathname;
-    console.log(loc);
   }
 
-  signInWithRosefire(): void {
-    Rosefire.signIn(environment.registryToken, (error, rfUser: RosefireUser) => {
-    if (error) {
-      // User not logged in!
-      console.error(error);
-      return;
-    }
-    // console.log("Rosefire is done. User: ", rfUser);
-    this.afAuth.auth.signInWithCustomToken(rfUser.token).then( (authState) => { 
-      // console.log("Firebase signin is done now. User: ", authState);
-      this.router.navigate(["/"]);
-      });
-    });
-  }
+  
 
 }

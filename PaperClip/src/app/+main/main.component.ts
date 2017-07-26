@@ -11,30 +11,12 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  private authStateSubscription: Subscription;
 
-  constructor(private afAuth: AngularFireAuth, 
-      private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.authStateSubscription = this.afAuth.authState.subscribe( (user: firebase.User) => { 
-      if (user) {
-        // Signin just happen
-
-      } else {
-        //Signout just happen
-        this.router.navigate(["/signin"]);
-      }
-     });
   }
 
-  ngOnDestroy(): void {
-    this.authStateSubscription.unsubscribe();
-  }
-  
-  signOut(): void {
-    this.afAuth.auth.signOut();
-  }
 
 }

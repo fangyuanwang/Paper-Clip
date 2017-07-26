@@ -3,6 +3,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 
 import * as firebase from 'firebase/app';
 import { Subscription } from "rxjs/Subscription";
+import { AuthService } from "app/services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
   showSignOut = false;
   private authStateSubscription: Subscription;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth,
+    public authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -32,8 +34,5 @@ export class AppComponent {
   ngOnDestroy(): void {
     this.authStateSubscription.unsubscribe();
   }
-  
-  signOut(): void {
-    this.afAuth.auth.signOut();
-  }
+
 }

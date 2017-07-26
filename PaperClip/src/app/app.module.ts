@@ -37,6 +37,8 @@ import {
 } from '@angular/material';
 import { MainComponent } from './+main/main.component';
 import { SignInComponent } from './+sign-in/sign-in.component';
+import { AuthGuard } from "app/services/auth.guard";
+import { AuthService } from "app/services/auth.service";
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -81,7 +83,10 @@ export const MaterialModules = [
     FlexLayoutModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
