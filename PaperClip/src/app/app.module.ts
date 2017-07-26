@@ -39,6 +39,12 @@ import { MainComponent } from './+main/main.component';
 import { SignInComponent } from './+sign-in/sign-in.component';
 import { AuthGuard } from "app/services/auth.guard";
 import { AuthService } from "app/services/auth.service";
+import { NoteComponent } from './notes/note/note.component';
+import { NoteListComponent } from './notes/note-list/note-list.component';
+import { FlashcardComponent } from './flashcards/flashcard/flashcard.component';
+import { FlashcardListComponent } from './flashcards/flashcard-list/flashcard-list.component';
+import { FlashcardService } from "app/services/flashcard.service";
+import { NoteService } from "app/services/note.service";
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -70,7 +76,11 @@ export const MaterialModules = [
   declarations: [
     AppComponent,
     MainComponent,
-    SignInComponent
+    SignInComponent,
+    NoteComponent,
+    NoteListComponent,
+    FlashcardComponent,
+    FlashcardListComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +96,8 @@ export const MaterialModules = [
   providers: [
     AuthService,
     AuthGuard,
+    FlashcardService,
+    NoteService,
   ],
   bootstrap: [AppComponent]
 })
