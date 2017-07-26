@@ -1,29 +1,37 @@
 $horz-padding: 30px;
-
 md-card {
-    md-card-title {
-        padding: 15px $horz-padding;
-        h2 {
-            margin: 0;
-            color: white;
-            font-weight: normal;
-        }
+  md-card-title {
+    padding: 15px $horz-padding;
+    h2 {
+      margin: 0;
+      color: white;
+      font-weight: normal;
     }
-
-    md-card-content {
-        padding: $horz-padding;
-        font-size: 18px;
-        button {
-            background-color: #800000;
-            color: white;
-            font-size: 18px;
-            margin: 20px;
-            padding: 5px 20px;
-        }
+  }
+  md-card-content {
+    padding: $horz-padding;
+    font-size: 18px;
+    #rose-button {
+      background-color: rgba(0, 100, 250, 0.7);
+      color: white;
+      font-size: 18px;
+      margin: 20px;
+      padding: 5px 20px;
     }
+    #google-button {
+      background-color: transparent;
+      background-image: url('/assets/img/google_signin_dark.png');
+      width: 191px;
+      height: 46px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      &:active {
+        background-image: url('/assets/img/google_signin_dark_pressed.png');
+      }
+    }
+  }
 }
 
 img {
-    height:100px;
-    
+  height: 100px;
 }

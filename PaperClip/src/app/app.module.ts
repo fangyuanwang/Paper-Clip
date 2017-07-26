@@ -80,7 +80,7 @@ export const MaterialModules = [
     NoteComponent,
     NoteListComponent,
     FlashcardComponent,
-    FlashcardListComponent
+    FlashcardListComponent,
   ],
   imports: [
     BrowserModule,

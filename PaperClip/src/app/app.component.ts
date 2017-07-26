@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from "angularfire2/auth";
 
@@ -14,12 +15,16 @@ export class AppComponent {
   showSignOut = false;
   private authStateSubscription: Subscription;
 
-  constructor(private afAuth: AngularFireAuth,
-    public authService: AuthService) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    public authService: AuthService,
+    private router: Router
+  ) {
+  
   }
 
   ngOnInit(): void {
-    this.authStateSubscription = this.afAuth.authState.subscribe( (user: firebase.User) => { 
+    this.authStateSubscription = this.afAuth.authState.subscribe((user: firebase.User) => {
       if (user) {
         // Signin just happen
         this.showSignOut = true;
@@ -27,12 +32,15 @@ export class AppComponent {
         //Signout just happen
         this.showSignOut = false;
       }
-     });
-    
+    });
+
   }
 
   ngOnDestroy(): void {
     this.authStateSubscription.unsubscribe();
+  }
+  redirect(): void {
+    this.router.navigate(["./note-list"]);
   }
 
 }

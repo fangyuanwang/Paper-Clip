@@ -1,3 +1,4 @@
+import { NoteListComponent } from './notes/note-list/note-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from "app/+main/main.component";
@@ -7,6 +8,7 @@ import { AuthGuard } from "app/services/auth.guard";
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: MainComponent, canActivate: [AuthGuard] },
   { path: 'signin', pathMatch: 'full', component: SignInComponent },
+  { path: 'note-list', pathMatch: 'full', component:NoteListComponent},
   { path: '**', redirectTo: '' },
 ];
 

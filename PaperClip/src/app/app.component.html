@@ -2,7 +2,7 @@
 <md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
   <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
   <md-menu [overlapTrigger]="false" #AllMenu="mdMenu">
-    <button md-menu-item>Notes</button>
+    <button md-menu-item (click)="redirect()" [routerLink]="['/note-list', '']">Notes</button>
     <button md-menu-item>Flashcards</button>
   </md-menu>
 

@@ -4,7 +4,8 @@
   </md-card-title>
   <md-card-content fxLayout="column" fxLayoutAlign="none center">
     <img src="./assets/img/logo1.jpg">
-    <button md-raised-button (click)="authService.signInWithRosefire()">Rose-Hulman Login</button>
+    <button md-raised-button id="rose-button" (click)="authService.signInWithRosefire()">Rose-Hulman Login</button>
+    <button id="google-button" md-button (click)="authService.signInWithGoogle()"></button>
     <p>In order to start using this app you first need to sign in. You can use Rose-Hulman credentials.</p>
-  </md-card-content>
+  </md-card-content> 
 </md-card>
