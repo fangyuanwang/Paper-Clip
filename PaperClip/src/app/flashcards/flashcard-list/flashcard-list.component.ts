@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flashcard-list.component.scss']
 })
 export class FlashcardListComponent implements OnInit {
-
-  constructor() { }
+  flashcards:string[];
+  title: string;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe( (routeParams: Params) => { 
+      this.title = routeParams["type"];
+     });
+
+    this.flashcards   = [this.title, this.title, this.title, this.title];
   }
 
 }

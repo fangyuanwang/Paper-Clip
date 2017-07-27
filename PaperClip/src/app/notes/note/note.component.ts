@@ -11,13 +11,13 @@ export enum EditMode {
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
-  
+
 
   isFavorited: boolean = false;
   @Input() noteType: string;
   editingMode = EditMode.notEditable;
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
@@ -33,8 +33,9 @@ export class NoteComponent implements OnInit {
   }
 
   //temporary method for toggle state
-  toggleFavorite(): void{
+  toggleFavorite(): void {
     this.isFavorited = !this.isFavorited;
   }
+
 
 }

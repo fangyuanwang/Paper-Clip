@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from "angularfire2/auth";
 
@@ -17,8 +16,7 @@ export class AppComponent {
 
   constructor(
     private afAuth: AngularFireAuth,
-    public authService: AuthService,
-    private router: Router
+    public authService: AuthService
   ) {
   
   }
