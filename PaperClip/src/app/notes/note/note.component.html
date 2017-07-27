@@ -1,7 +1,22 @@
-<div class="container">
-  <!-- <md-input-container>
-    <textarea required md-maxlength="150"></textarea>
-  </md-input-container> -->
-  <textarea required md-maxlength="5"></textarea><br>
-  <img src="./assets/img/star-on.png">
-</div>
+<md-card class="container">
+  <md-card-title>
+    Note Title
+  </md-card-title>
+
+  <md-card-content  fxLayout="column" fxLayoutAlign="none stretch">
+    <md-input-container class="md-block">
+      <textarea mdInput #noteContent required md-maxlength="200" rows="5" md-select-on-focus placeholder="Note Conent">Some notes will go here.and it will not be editable in the future if it doesn't belong to current user</textarea>
+      <md-hint align="end">{{noteContent.value.length}} / 200</md-hint>
+    </md-input-container>
+  </md-card-content>
+
+  <md-card-actions fxLayout="row">
+    <span fxFlex></span> 
+    <button md-icon-button *ngIf="editingMode==1"><md-icon>edit</md-icon></button>
+    <button md-icon-button *ngIf="editingMode==1"><md-icon>delete</md-icon></button>
+    <button md-icon-button *ngIf="isFavorited;else favoriteButtonTemplate" (click)="toggleFavorite()"><md-icon>favorite</md-icon></button>
+    <ng-template #favoriteButtonTemplate>
+        <button md-icon-button (click)="toggleFavorite()"><md-icon>favorite_border</md-icon></button>
+    </ng-template>
+  </md-card-actions>
+</md-card>

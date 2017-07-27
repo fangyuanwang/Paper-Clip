@@ -24,23 +24,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.authStateSubscription = this.afAuth.authState.subscribe((user: firebase.User) => {
-      if (user) {
-        // Signin just happen
-        this.showSignOut = true;
-      } else {
-        //Signout just happen
-        this.showSignOut = false;
-      }
-    });
 
-  }
-
-  ngOnDestroy(): void {
-    this.authStateSubscription.unsubscribe();
-  }
-  redirect(): void {
-    this.router.navigate(["./note-list"]);
   }
 
 }

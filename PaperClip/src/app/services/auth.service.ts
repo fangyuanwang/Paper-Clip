@@ -11,6 +11,7 @@ export class AuthService {
 
   public _currentUserUid: string;
   public isSignedInStream: Observable<boolean>;
+  public displayNameStream: Observable<string>;
 
   get currentUserUid(): string {
     return this._currentUserUid;
@@ -31,7 +32,16 @@ export class AuthService {
     this.isSignedInStream = this.afAuth.authState
       .map<firebase.User, boolean>((user: firebase.User) => {
         return user != null;
-      });
+    });
+
+     this.displayNameStream = this.afAuth.authState
+    .map<firebase.User, string>( (user: firebase.User) => { 
+      if (user) {
+        return user.displayName;
+      } else {
+        return '';
+      }
+    });
   }
 
   signInWithRosefire(): void {

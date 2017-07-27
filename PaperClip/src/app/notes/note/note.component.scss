@@ -1,10 +1,33 @@
 .container {
-  width: 300px;
-  background-color: #DDD;
+  width: 400px;
   margin: 10px 20px;
   display: inline-block;
-  padding:10px;
-  img {
-    width: 40px;
+}
+
+md-card {
+  overflow: hidden;
+  padding: 20px;
+  md-card-title {
+  padding: 10px 10px;
+  margin: 0;
+
+    h2 {
+      margin: 0;
+      color: white;
+      font-weight: normal;
+    }
+  }
+
+  md-card-content {
+    padding: 5px 5px;
+    margin-bottom: 5px;
+  }
+
+  md-card-actions {
+    padding: 0;
+  }
+  textarea {
+    resize: none;
   }
 }
+

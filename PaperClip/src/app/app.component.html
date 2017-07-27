@@ -1,25 +1,29 @@
 <img src="./assets/img/logo2.jpg" id="logo">
+
 <md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
   <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
   <md-menu [overlapTrigger]="false" #AllMenu="mdMenu">
-    <button md-menu-item (click)="redirect()" [routerLink]="['/note-list', '']">Notes</button>
+    <button md-menu-item [routerLink]="['/note-list', 'all']"
+            routerLinkActive="active">Notes</button>
     <button md-menu-item>Flashcards</button>
   </md-menu>
 
   <button md-button [mdMenuTriggerFor]="MyMenu">My Stuff</button>
   <md-menu [overlapTrigger]="false" #MyMenu="mdMenu">
-    <button md-menu-item>Notes</button>
+    <button md-menu-item [routerLink]="['/note-list', 'mynotes']"
+            routerLinkActive="active">Notes</button>
     <button md-menu-item>Flashcards</button>
   </md-menu>
 
   <button md-button [mdMenuTriggerFor]="MyFavoriteMenu">My Favorites</button>
   <md-menu [overlapTrigger]="false" #MyFavoriteMenu="mdMenu">
-    <button md-menu-item>Notes</button>
+    <button md-menu-item [routerLink]="['/note-list', 'myfavorites']"
+            routerLinkActive="active">Notes</button>
     <button md-menu-item>Flashcards</button>
   </md-menu>
 
   <span fxFlex></span>
-
+  {{authService.displayNameStream | async}}
   <button md-icon-button [mdMenuTriggerFor]="signOutMenu">
     <md-icon>more_vert</md-icon>
   </button>
