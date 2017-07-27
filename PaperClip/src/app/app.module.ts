@@ -45,6 +45,7 @@ import { FlashcardComponent } from './flashcards/flashcard/flashcard.component';
 import { FlashcardListComponent } from './flashcards/flashcard-list/flashcard-list.component';
 import { FlashcardService } from "app/services/flashcard.service";
 import { NoteService } from "app/services/note.service";
+import { MyNoteListComponent } from './notes/my-note-list/my-note-list.component';
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -81,6 +82,7 @@ export const MaterialModules = [
     NoteListComponent,
     FlashcardComponent,
     FlashcardListComponent,
+    MyNoteListComponent,
   ],
   imports: [
     BrowserModule,

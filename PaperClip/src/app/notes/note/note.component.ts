@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Note } from "app/models/note";
+import { AuthService } from "app/services/auth.service";
 
 export enum EditMode {
   notEditable = 0,
@@ -12,22 +14,16 @@ export enum EditMode {
 })
 export class NoteComponent implements OnInit {
 
-
   isFavorited: boolean = false;
-  @Input() noteType: string;
+  @Input() note: Note;
   editingMode = EditMode.notEditable;
 
-  constructor() {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit() {
-    if (this.noteType == 'myfavorites') {
-      this.isFavorited = true;
-    } else {
-      this.isFavorited = false;
-    }
 
-    if (this.noteType == 'mynotes') {
+    if (this.note.uid == this.authService.currentUserUid) {
       this.editingMode = EditMode.displayEditButtons;
     }
   }

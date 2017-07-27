@@ -14,13 +14,17 @@ md-card {
   md-card-content {
     padding: $horz-padding;
     font-size: 18px;
+
     #rose-button {
       background-color: rgba(0, 100, 250, 0.7);
       color: white;
-      font-size: 18px;
-      margin: 20px;
-      padding: 5px 20px;
+      font-size: 16px;
+      margin: 10px;
+      width: 185px;
+      height: 46px;
+      padding: 0 16px;
     }
+
     #google-button {
       background-color: transparent;
       background-image: url('/assets/img/google_signin_dark.png');
