@@ -3,5 +3,13 @@
 }
 
 #logo {
-    margin: 20px 0 10px 20px;
+    margin: 15px 0 10px 15px;
+}
+
+button[md-menu-item].active {
+    background-color: lightgray;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.1)
 }
