@@ -37,7 +37,7 @@ export class AuthService {
      this.displayNameStream = this.afAuth.authState
     .map<firebase.User, string>( (user: firebase.User) => { 
       if (user) {
-        return user.displayName;
+        return user.displayName || user.uid;
       } else {
         return '';
       }
@@ -58,6 +58,7 @@ export class AuthService {
       });
     });
   }
+  
   signInWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result: any) => {
