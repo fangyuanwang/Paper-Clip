@@ -3,9 +3,9 @@
 <md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
   <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
   <md-menu [overlapTrigger]="false" #AllMenu="mdMenu">
-    <button md-menu-item [routerLink]="['/note-list', 'all']"
+    <button md-menu-item [routerLink]="['/note-list/all']"
             routerLinkActive="active">Notes</button>
-    <button md-menu-item [routerLink]="['/flashcard-list', 'all']"
+    <button md-menu-item [routerLink]="['/flashcard-list/all']"
             routerLinkActive="active">Flashcards</button>
   </md-menu>
 
@@ -13,7 +13,7 @@
   <md-menu [overlapTrigger]="false" #MyMenu="mdMenu">
     <button md-menu-item [routerLink]="['/note-list/mynotes']"
             routerLinkActive="active">Notes</button>
-    <button md-menu-item [routerLink]="['/flashcard-list', 'myflashcards']"
+    <button md-menu-item [routerLink]="['/flashcard-list/myflashcards']"
             routerLinkActive="active">Flashcards</button>
   </md-menu>
 
@@ -21,7 +21,7 @@
   <md-menu [overlapTrigger]="false" #MyFavoriteMenu="mdMenu">
     <button md-menu-item [routerLink]="['/note-list/myfavorites']"
             routerLinkActive="active">Notes</button>
-    <button md-menu-item [routerLink]="['/flashcard-list', 'myfavorites']"
+    <button md-menu-item [routerLink]="['/flashcard-list/myfavorites']"
             routerLinkActive="active">Flashcards</button>
   </md-menu>
 

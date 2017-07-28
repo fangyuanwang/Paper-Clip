@@ -2,5 +2,37 @@
   main works!
   should we decide what to show? Notes or Flashcards or a little bit of both?
   like a preview? 
-  
 </p>
+
+<div>
+  <h2>Recent Notes</h2>
+  <div fxLayout="row">
+    <md-card>
+      <md-card-title>
+        Some notes card display here
+      </md-card-title>
+    </md-card>
+  </div><br>
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <button md-raised-button [routerLink]="['/note-list/all']">More...</button>
+  </div>
+</div>
+<br>
+<hr>
+
+<div>
+  <h2>Recent Flashcards</h2>
+  <div fxLayout="row">
+    <md-card>
+      <md-card-title>
+        Some flashcard card display here
+      </md-card-title>
+    </md-card>
+  </div>
+  <br>
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <button md-raised-button [routerLink]="['/flashcard-list/all']">More...</button>
+  </div>
+</div>
