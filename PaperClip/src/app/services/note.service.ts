@@ -8,23 +8,35 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/combineLatest';
 import { Query } from "angularfire2/interfaces";
 import 'rxjs/add/operator/switchMap';
+import * as firebase from 'firebase/app';
+
+export enum NoteRoute {
+  all = 0,
+  mynotes = 1,
+  myfavs = 2,
+}
 
 @Injectable()
 export class NoteService {
   readonly notesPath = "notes";
-  public isMyNotesPageStream: Subject<boolean>;
+  public myNotesRouteStream: Subject<NoteRoute>;
   public notesStream: Observable<Note[]>;
 
   constructor(private db: AngularFireDatabase,
     public authService: AuthService) { 
-      this.isMyNotesPageStream = new BehaviorSubject<boolean>(false);
+      this.myNotesRouteStream = new BehaviorSubject<NoteRoute>(NoteRoute.all);
 
       const queryStream: Observable<Query> = Observable.combineLatest<Query>(
-      this.isMyNotesPageStream,
-       (isMyNotesPage: boolean) => { 
-         if (isMyNotesPage) {
+      this.myNotesRouteStream,
+       (myNotesRoute: NoteRoute) => { 
+         if (myNotesRoute == NoteRoute.mynotes) {
           return {
             orderByChild: 'uid',
+            equalTo: this.authService.currentUserUid,
+          };
+         } else if (myNotesRoute == NoteRoute.myfavs) {
+          return {
+            orderByChild: 'favoriteBy',
             equalTo: this.authService.currentUserUid,
           };
          } else {
@@ -40,8 +52,12 @@ export class NoteService {
      });
   }
 
-  showOnlyMyNotes(isMyNotesPage: boolean): void {
-    this.isMyNotesPageStream.next(isMyNotesPage);
+  showMyNotesRoute(route: NoteRoute): void {
+    this.myNotesRouteStream.next(route);
+  }
+
+  update(key: string, note: Note):void  {
+    firebase.database().ref().child(this.notesPath).child(key).set(note);
   }
 
 }

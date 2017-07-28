@@ -19,7 +19,7 @@
 
   <button md-button [mdMenuTriggerFor]="MyFavoriteMenu">My Favorites</button>
   <md-menu [overlapTrigger]="false" #MyFavoriteMenu="mdMenu">
-    <button md-menu-item [routerLink]="['/note-list', 'myfavorites']"
+    <button md-menu-item [routerLink]="['/note-list/myfavorites']"
             routerLinkActive="active">Notes</button>
     <button md-menu-item [routerLink]="['/flashcard-list', 'myfavorites']"
             routerLinkActive="active">Flashcards</button>

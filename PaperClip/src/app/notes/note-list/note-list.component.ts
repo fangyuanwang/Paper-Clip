@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
-import { NoteService } from "app/services/note.service";
+import { NoteService, NoteRoute } from "app/services/note.service";
 
 @Component({
   selector: 'app-note-list',
@@ -18,7 +18,7 @@ export class NoteListComponent implements OnInit, OnDestroy {
       this.title = routeParams["type"];
      });
    
-    this.noteService.showOnlyMyNotes(false);
+    this.noteService.showMyNotesRoute(NoteRoute.all);
   }
 
   ngOnDestroy() {

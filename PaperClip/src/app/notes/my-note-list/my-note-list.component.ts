@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { NoteService } from "app/services/note.service";
+import { NoteService, NoteRoute } from "app/services/note.service";
 
 @Component({
   selector: 'app-my-note-list',
@@ -13,7 +13,7 @@ export class MyNoteListComponent implements OnInit {
     public noteService: NoteService) { }
 
   ngOnInit() {
-    this.noteService.showOnlyMyNotes(true);
+    this.noteService.showMyNotesRoute(NoteRoute.mynotes);
   }
 
 }

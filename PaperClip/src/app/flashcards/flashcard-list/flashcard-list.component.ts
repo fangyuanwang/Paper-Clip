@@ -1,5 +1,6 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FlashcardService, FlashcardRoute } from "app/services/flashcard.service";
 
 @Component({
   selector: 'app-flashcard-list',
@@ -8,15 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlashcardListComponent implements OnInit {
   flashcards:string[];
-  title: string;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    public flashcardService: FlashcardService) { }
 
   ngOnInit() {
-    this.route.params.subscribe( (routeParams: Params) => { 
-      this.title = routeParams["type"];
-     });
 
-    this.flashcards   = [this.title, this.title, this.title, this.title];
+    this.flashcards   = ['1', '2', '3', '4'];
+    this.flashcardService.showMyFlashcardsRoute(FlashcardRoute.myflashcards);
   }
 
 }
