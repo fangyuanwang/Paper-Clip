@@ -1,6 +1,6 @@
 <h1>All</h1>
 <md-grid-list [cols]="2" gutterSize="10px" rowHeight="300px">
   <md-grid-tile *ngFor="let flashcard of flashcards">
-    <app-flashcard [cardType]=flashcard></app-flashcard>
+    <app-flashcard-group [cardType]=flashcard></app-flashcard-group>
   </md-grid-tile>
 </md-grid-list>

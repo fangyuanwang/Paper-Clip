@@ -49,6 +49,8 @@ import { MyNoteListComponent } from './notes/my-note-list/my-note-list.component
 import { MyFavNoteListComponent } from './notes/my-fav-note-list/my-fav-note-list.component';
 import { MyFlashcardListComponent } from './flashcards/my-flashcard-list/my-flashcard-list.component';
 import { MyFavFlashcardListComponent } from './flashcards/my-fav-flashcard-list/my-fav-flashcard-list.component';
+import { FlashcardGroupComponent } from './flashcards/flashcard-group/flashcard-group.component';
+import { FlashcardGroupListComponent } from './+flashcard-group-list/flashcard-group-list.component';
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -89,6 +91,8 @@ export const MaterialModules = [
     MyFavNoteListComponent,
     MyFlashcardListComponent,
     MyFavFlashcardListComponent,
+    FlashcardGroupComponent,
+    FlashcardGroupListComponent,
   ],
   imports: [
     BrowserModule,

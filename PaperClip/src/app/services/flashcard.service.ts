@@ -6,6 +6,7 @@ import { AuthService } from "app/services/auth.service";
 import { AngularFireDatabase } from "angularfire2/database";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Query } from "angularfire2/interfaces";
+import { FlashCardGroup } from "app/models/flashcard-group";
 
 
 export enum FlashcardRoute {
@@ -18,7 +19,7 @@ export enum FlashcardRoute {
 export class FlashcardService {
   readonly flashcardsPath = "flashcards";
   public myFlashcardsRouteStream: Subject<FlashcardRoute>;
-  public flashcardStream: Observable<FlashCard[]>;
+  public flashcardStream: Observable<FlashCardGroup[]>;
   
   constructor(private db: AngularFireDatabase,
     public authService: AuthService) {
@@ -45,7 +46,7 @@ export class FlashcardService {
        }
     );
     this.flashcardStream = queryStream
-      .switchMap<Query, FlashCard[]>( (queryPara: Query) => { 
+      .switchMap<Query, FlashCardGroup[]>( (queryPara: Query) => { 
         return this.db.list(this.flashcardsPath, {query: queryPara});
      });
   }

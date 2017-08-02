@@ -22,7 +22,7 @@ export class FlashcardComponent implements OnInit {
       this.isFavorited = false;
     }
 
-    if (this.cardType == 'mynotes') {
+    if (this.cardType == 'myflashcards') {
       this.editingMode = EditMode.displayEditButtons;
     }
   }

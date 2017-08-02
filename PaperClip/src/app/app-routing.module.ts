@@ -1,3 +1,4 @@
+import { FlashcardGroupListComponent } from './+flashcard-group-list/flashcard-group-list.component';
 import { FlashcardListComponent } from './flashcards/flashcard-list/flashcard-list.component';
 import { NoteListComponent } from './notes/note-list/note-list.component';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'flashcard-list/all', component:FlashcardListComponent, canActivate: [AuthGuard]},
   { path: 'flashcard-list/myflashcards', component:MyFlashcardListComponent, canActivate: [AuthGuard]},
   { path: 'flashcard-list/myfavorites', component:MyFavFlashcardListComponent, canActivate: [AuthGuard]},
+  { path: 'flashcard-list/:flashcardKey', component:FlashcardGroupListComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' },
 ];
 
