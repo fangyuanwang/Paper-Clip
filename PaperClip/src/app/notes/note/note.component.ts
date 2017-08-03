@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Note } from "app/models/note";
 import { AuthService } from "app/services/auth.service";
 import { NoteService } from "app/services/note.service";
+import { MdDialogConfig, MdDialog } from "@angular/material";
+import { NoteDialogComponent } from "app/notes/note-dialog/note-dialog.component";
 
 export enum EditMode {
   notEditable = 0,
@@ -20,7 +22,8 @@ export class NoteComponent implements OnInit {
   editingMode = EditMode.notEditable;
 
   constructor(public authService: AuthService,
-    public noteService: NoteService) {
+    public noteService: NoteService,
+    private dialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -31,7 +34,6 @@ export class NoteComponent implements OnInit {
     this.isFavorited = this.note.favoriteBy == this.authService.currentUserUid;
   }
 
-  //temporary method for toggle state
   toggleFavorite(): void {
     this.isFavorited = !this.isFavorited;
     var updateNote = new Note();
@@ -45,8 +47,16 @@ export class NoteComponent implements OnInit {
     }
 
     this.noteService.update(this.note.$key, updateNote);
-
   }
 
+  showEditDialog(): void {
+    const dialogConfig = new MdDialogConfig();
+    dialogConfig.data = {note: this.note};
+    this.dialog.open(NoteDialogComponent, dialogConfig);
+  }
+
+  remove(): void {
+    this.noteService.remove(this.note.$key);
+  }
 
 }

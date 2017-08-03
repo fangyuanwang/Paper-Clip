@@ -14,4 +14,11 @@ export class Note extends FirebaseFlatSnapshot {
         this.uid = obj && obj.uid || '';
         this.favoriteBy = obj && obj.favoriteBy || '';
     }
+
+    setValue(note: Note):void {
+        this.title = note.title;
+        this.content = note.content;
+        this.uid = note.uid ;
+        this.favoriteBy =  note.favoriteBy;
+    }
 }

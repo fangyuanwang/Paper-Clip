@@ -1,0 +1,23 @@
+<h1 md-dialog-title>{{title}}</h1>
+<form #noteForm="ngForm" fxLayout="column" (ngSubmit)="onSubmit()">
+  <md-dialog-content fxFlex="1" fxLayout="column" fxLayoutAlign="none center">
+    <md-input-container>
+      <input mdInput required placeholder="Note Title"
+             name="title" [(ngModel)]="formNote.title">
+    </md-input-container>
+    <md-input-container>
+      <textarea mdInput placeholder="Note Content" required #noteContent required md-maxlength="200" rows="7" md-select-on-focus
+             name="content" [(ngModel)]="formNote.content"></textarea>
+      <md-hint align="end">{{noteContent.value.length}} / 200</md-hint>
+    </md-input-container>
+    <!-- <md-input-container>
+      <input mdInput required placeholder="category"
+             name="category" [(ngModel)]="formNote.category">
+    </md-input-container> -->
+  </md-dialog-content>
+
+  <md-dialog-actions fxLayoutAlign="end center">
+    <button md-button type="button" md-dialog-close>Cancel</button>
+    <button md-button [disabled]="!noteForm.form.valid" type="submit">Save</button>
+  </md-dialog-actions>
+</form>

@@ -1,0 +1,19 @@
+[md-dialog-title] {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: #444;
+    padding: 0 10px;
+}
+
+form {
+    width: auto;
+    md-dialog-content {
+        overflow: hidden;
+        width: 350px;
+
+        md-input-container {
+            width: 100%;
+        }
+    }
+}

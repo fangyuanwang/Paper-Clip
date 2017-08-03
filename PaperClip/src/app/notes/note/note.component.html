@@ -4,19 +4,16 @@
   </md-card-title>
 
   <md-card-content  fxLayout="column" fxLayoutAlign="none stretch">
-    <md-input-container class="md-block">
-      <textarea mdInput #noteContent required md-maxlength="200" rows="5" md-select-on-focus placeholder="Note Conent">{{note.content}}</textarea>
-      <md-hint align="end">{{noteContent.value.length}} / 200</md-hint>
-    </md-input-container>
+    <p class="note-content">{{note.content}}</p>
   </md-card-content>
 
   <md-card-actions fxLayout="row">
     <span fxFlex></span> 
-    <button md-icon-button *ngIf="editingMode==1"><md-icon>edit</md-icon></button>
-    <button md-icon-button *ngIf="editingMode==1"><md-icon>delete</md-icon></button>
-    <button md-icon-button *ngIf="isFavorited;else favoriteButtonTemplate" (click)="toggleFavorite()"><md-icon>favorite</md-icon></button>
+    <button md-icon-button *ngIf="editingMode==1" (click)="showEditDialog()"><md-icon>edit</md-icon></button>
+    <button md-icon-button *ngIf="editingMode==1" (click)="remove()"><md-icon>delete</md-icon></button>
+    <button md-icon-button *ngIf="isFavorited && editingMode!==1;else favoriteButtonTemplate" (click)="toggleFavorite()"><md-icon>favorite</md-icon></button>
     <ng-template #favoriteButtonTemplate>
-        <button md-icon-button (click)="toggleFavorite()"><md-icon>favorite_border</md-icon></button>
+        <button md-icon-button (click)="toggleFavorite()" *ngIf="editingMode!==1"><md-icon>favorite_border</md-icon></button>
     </ng-template>
   </md-card-actions>
 </md-card>

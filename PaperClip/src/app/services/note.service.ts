@@ -56,8 +56,19 @@ export class NoteService {
     this.myNotesRouteStream.next(route);
   }
 
-  update(key: string, note: Note):void  {
+  update(key: string, note: Note):void {
     firebase.database().ref().child(this.notesPath).child(key).set(note);
+  }
+
+  add(note: Note): void {
+    firebase.database().ref().child(this.notesPath).push(note);
+  }
+
+  remove(keyToRemove: string): void {
+    firebase.database().ref().child(this.notesPath).child(keyToRemove).remove();
+    
+    //alternative way
+    // this.db.object(`/${this.notesPath}/${keyToRemove}`).remove();
   }
 
 }

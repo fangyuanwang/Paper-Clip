@@ -1,7 +1,8 @@
 <h1>My Notes</h1>
 <h5> These messages will be removed. This just displays for showing different routes</h5>
-<md-grid-list [cols]="2" gutterSize="10px" rowHeight="300px">
+<md-grid-list [cols]="2" gutterSize="10px" rowHeight="270px">
   <md-grid-tile *ngFor="let note of (noteService.notesStream | async)">
     <app-note [note]=note></app-note>
   </md-grid-tile>
 </md-grid-list>
+<a md-fab (click)="showNoteDialog()"><md-icon>add</md-icon></a>
