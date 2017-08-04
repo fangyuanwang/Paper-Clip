@@ -36,8 +36,8 @@ export class NoteService {
           };
          } else if (myNotesRoute == NoteRoute.myfavs) {
           return {
-            orderByChild: 'favoriteBy',
-            equalTo: this.authService.currentUserUid,
+            orderByChild: `favoriteBy/${this.authService.currentUserUid}`,
+            equalTo: true,
           };
          } else {
           return {

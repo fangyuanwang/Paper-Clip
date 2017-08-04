@@ -31,7 +31,11 @@ export class NoteComponent implements OnInit {
     if (this.note.uid == this.authService.currentUserUid) {
       this.editingMode = EditMode.displayEditButtons;
     }
-    this.isFavorited = this.note.favoriteBy == this.authService.currentUserUid;
+    if (this.note.favoriteBy && this.note.favoriteBy[this.authService.currentUserUid]) {
+      this.isFavorited = true;
+    } else {
+      this.isFavorited = false;
+    }
   }
 
   toggleFavorite(): void {
@@ -40,10 +44,15 @@ export class NoteComponent implements OnInit {
     updateNote.content = this.note.content;
     updateNote.title = this.note.title;
     updateNote.uid = this.note.uid;
+    updateNote.favoriteBy = this.note.favoriteBy;
+    console.log(updateNote.uid);
     if (this.isFavorited) {
-      updateNote.favoriteBy = this.authService.currentUserUid;
+      // if (updateNote.favoriteBy) {
+      //   updateNote.favoriteBy = {};
+      // }
+      updateNote.favoriteBy[this.authService.currentUserUid] = true;
     } else {
-      updateNote.favoriteBy = '';
+      updateNote.favoriteBy[this.authService.currentUserUid] = false;
     }
 
     this.noteService.update(this.note.$key, updateNote);
@@ -56,6 +65,7 @@ export class NoteComponent implements OnInit {
   }
 
   remove(): void {
+    // TODO add delete dialog
     this.noteService.remove(this.note.$key);
   }
 
