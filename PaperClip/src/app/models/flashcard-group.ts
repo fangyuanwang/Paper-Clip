@@ -6,12 +6,16 @@ export class FlashCardGroup extends FirebaseFlatSnapshot {
     public title: string;
     public desc: string;
     public uid: string;
-    public flashCards: FlashCard[];
     constructor(obj?: any) {
         super(obj);
         this.title = obj && obj.title || '';
         this.desc = obj && obj.desc || '';
         this.uid = obj && obj.uid || '';
-        this.flashCards = obj && obj.flashCards || '';
+    }
+
+    setValue(flashcardGroup: FlashCardGroup): void {
+        this.title = flashcardGroup.title;
+        this.desc = flashcardGroup.desc;
+        this.uid = flashcardGroup.uid;
     }
 }

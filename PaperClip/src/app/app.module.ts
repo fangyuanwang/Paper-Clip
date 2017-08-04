@@ -53,6 +53,7 @@ import { FlashcardGroupComponent } from './flashcards/flashcard-group/flashcard-
 import { FlashcardGroupListComponent } from './+flashcard-group-list/flashcard-group-list.component';
 import { NoteDialogComponent } from './notes/note-dialog/note-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { FlashcardDialogComponent } from './flashcards/flashcard-dialog/flashcard-dialog.component';
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -97,9 +98,11 @@ export const MaterialModules = [
     FlashcardGroupListComponent,
     NoteDialogComponent,
     DeleteDialogComponent,
+    FlashcardDialogComponent,
   ],
   entryComponents: [
     NoteDialogComponent,
+    FlashcardDialogComponent,
   ],
   imports: [
     BrowserModule,

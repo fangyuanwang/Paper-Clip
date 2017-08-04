@@ -1,4 +1,4 @@
-import { FlashcardService, FlashcardRoute } from 'app/services/flashcard.service';
+import { FlashcardService, FlashcardGroupRoute } from 'app/services/flashcard.service';
 import { ActivatedRoute } from '@angular/router';
 import { EditMode } from 'app/notes/note/note.component';
 import { Component, OnInit, Input } from '@angular/core';
@@ -9,7 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./flashcard-group-list.component.scss']
 })
 export class FlashcardGroupListComponent implements OnInit {
-  title = "Some flashcard title"
+  title = "Some flashcard title";
+  description = "Some description of flashcards";
   flashcards: string[];
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService) { }
@@ -17,7 +18,7 @@ export class FlashcardGroupListComponent implements OnInit {
   ngOnInit() {
 
     this.flashcards = ['1', '2', '3', '4'];
-    this.flashcardService.showMyFlashcardsRoute(FlashcardRoute.myfavs);
+    this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.myfavs);
   }
 
 }

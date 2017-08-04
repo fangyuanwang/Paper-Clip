@@ -1,3 +1,4 @@
+import { FlashCard } from './../../models/flashcard';
 import { Component, OnInit, Input } from '@angular/core';
 import { EditMode } from "app/notes/note/note.component";
 
@@ -10,21 +11,12 @@ export class FlashcardComponent implements OnInit {
 
 
   isFavorited: boolean = false;
-  @Input() cardType: string;
+  @Input() flashcard: FlashCard;
   editingMode = EditMode.notEditable;
 
   constructor() { }
 
   ngOnInit() {
-    if (this.cardType == 'myfavorites') {
-      this.isFavorited = true;
-    } else {
-      this.isFavorited = false;
-    }
-
-    if (this.cardType == 'myflashcards') {
-      this.editingMode = EditMode.displayEditButtons;
-    }
   }
   toggleFavorite(): void {
     this.isFavorited = !this.isFavorited;

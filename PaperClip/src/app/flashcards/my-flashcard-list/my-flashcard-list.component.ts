@@ -1,6 +1,8 @@
+import { FlashcardDialogComponent } from './../flashcard-dialog/flashcard-dialog.component';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FlashcardService, FlashcardRoute } from "app/services/flashcard.service";
+import { FlashcardService, FlashcardGroupRoute } from "app/services/flashcard.service";
 
 @Component({
   selector: 'app-my-flashcard-list',
@@ -8,16 +10,19 @@ import { FlashcardService, FlashcardRoute } from "app/services/flashcard.service
   styleUrls: ['./my-flashcard-list.component.scss']
 })
 export class MyFlashcardListComponent implements OnInit {
-  flashcards:string[];
   constructor(private route: ActivatedRoute,
-    public flashcardService: FlashcardService) {
+    public flashcardService: FlashcardService,
+    private dialog: MdDialog) {
 
-     }
+  }
 
   ngOnInit() {
-
-    this.flashcards   = ['1', '2', '3', '4'];
-    this.flashcardService.showMyFlashcardsRoute(FlashcardRoute.all);
+    // this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.all);
+  }
+  showDialog() {
+    const dialogConfig = new MdDialogConfig();
+    dialogConfig.data = {};
+    this.dialog.open(FlashcardDialogComponent, dialogConfig);
   }
 
 }

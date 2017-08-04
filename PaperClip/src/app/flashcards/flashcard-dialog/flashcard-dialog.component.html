@@ -1,0 +1,19 @@
+<h1 md-dialog-title>{{title}}</h1>
+<form #flashcardGroupForm="ngForm" fxLayout="column" (ngSubmit)="onSubmit()">
+  <md-dialog-content fxFlex="1" fxLayout="column" fxLayoutAlign="none center">
+    <md-input-container>
+      <input mdInput required placeholder="Flashcard Group Title"
+             name="title" [(ngModel)]="formFlashcardGroup.title">
+    </md-input-container>
+    <md-input-container>
+      <textarea mdInput placeholder="Flashcard Description" required #flashcardGroupDesc required md-maxlength="200" rows="7" md-select-on-focus
+             name="content" [(ngModel)]="formFlashcardGroup.desc"></textarea>
+      <md-hint align="end">{{flashcardGroupDesc.value.length}} / 200</md-hint>
+    </md-input-container>
+  </md-dialog-content>
+
+  <md-dialog-actions fxLayoutAlign="end center">
+    <button md-button type="button" md-dialog-close>Cancel</button>
+    <button md-button [disabled]="!flashcardGroupForm.form.valid" type="submit">Save</button>
+  </md-dialog-actions>
+</form>

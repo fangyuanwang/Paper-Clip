@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FlashcardRoute, FlashcardService } from "app/services/flashcard.service";
+import { FlashcardGroupRoute, FlashcardService } from "app/services/flashcard.service";
 
 @Component({
   selector: 'app-my-fav-flashcard-list',
@@ -15,7 +15,7 @@ export class MyFavFlashcardListComponent implements OnInit {
   ngOnInit() {
 
     this.flashcards   = ['1', '2', '3', '4'];
-    this.flashcardService.showMyFlashcardsRoute(FlashcardRoute.myfavs);
+    this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.myfavs);
   }
 
 }
