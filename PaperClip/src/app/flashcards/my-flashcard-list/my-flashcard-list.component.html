@@ -1,11 +1,11 @@
-<div>
+<div fxLayout="row" fxLayoutAlign="none center">
   <h1>My Flashcards</h1>
   <span fxFlex></span>
   <button color="accent" md-raised-button (click)="showDialog()">
     Add a New Flashcard
   </button>
 </div>
-<md-grid-list [cols]="2" gutterSize="10px" rowHeight="300px">
+<md-grid-list [cols]="2" gutterSize="10px" rowHeight="200px">
   <md-grid-tile *ngFor="let flashcardGroup of (flashcardService.flashcardGroupStream | async)">
     <app-flashcard-group [flashcardGroup]=flashcardGroup></app-flashcard-group>
   </md-grid-tile>

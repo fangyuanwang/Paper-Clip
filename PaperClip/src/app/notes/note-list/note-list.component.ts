@@ -28,9 +28,4 @@ export class NoteListComponent implements OnInit, OnDestroy {
     this.title = '';
   }
 
-  showNoteDialog(): void {
-    const dialogConfig = new MdDialogConfig();
-    dialogConfig.data = {firebasePath: this.noteService.notesPath};
-    this.dialog.open(NoteDialogComponent, dialogConfig);
-  }
 }

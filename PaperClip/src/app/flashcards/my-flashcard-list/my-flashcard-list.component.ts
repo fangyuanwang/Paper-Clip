@@ -17,7 +17,7 @@ export class MyFlashcardListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.all);
+    this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.myflashcards);
   }
   showDialog() {
     const dialogConfig = new MdDialogConfig();

@@ -11,11 +11,7 @@
     <md-card-actions fxLayout="row">
       <span fxFlex></span>
       <button md-icon-button *ngIf="editingMode==1"><md-icon>edit</md-icon></button>
-      <button md-icon-button *ngIf="editingMode==1"><md-icon>delete</md-icon></button>
-      <button md-icon-button *ngIf="isFavorited;else favoriteButtonTemplate" (click)="toggleFavorite()"><md-icon>favorite</md-icon></button>
-      <ng-template #favoriteButtonTemplate>
-        <button md-icon-button (click)="toggleFavorite()"><md-icon>favorite_border</md-icon></button>
-      </ng-template>
+      <button md-icon-button *ngIf="editingMode==1" (click)="remove()"><md-icon>delete</md-icon></button>
     </md-card-actions>
   </md-card>
 
@@ -35,10 +31,6 @@
       <span fxFlex></span>
       <button md-icon-button *ngIf="editingMode==1"><md-icon>edit</md-icon></button>
       <button md-icon-button *ngIf="editingMode==1"><md-icon>delete</md-icon></button>
-      <button md-icon-button *ngIf="isFavorited;else favoriteButtonTemplate" (click)="toggleFavorite()"><md-icon>favorite</md-icon></button>
-      <ng-template #favoriteButtonTemplate>
-        <button md-icon-button (click)="toggleFavorite()"><md-icon>favorite_border</md-icon></button>
-      </ng-template>
     </md-card-actions>
   </md-card> 
 </div>

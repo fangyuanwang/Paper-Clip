@@ -40,8 +40,8 @@ export class FlashcardService {
           };
         } else if (myFlashcardsRoute == FlashcardGroupRoute.myfavs) {
           return {
-            orderByChild: 'favoriteBy',
-            equalTo: this.authService.currentUserUid,
+            orderByChild: `favoriteBy/${this.authService.currentUserUid}`,
+            equalTo: true,
           };
         } else {
           return {
@@ -55,7 +55,8 @@ export class FlashcardService {
         return this.db.list(this.flashcardsGroupPath, { query: queryPara });
       });
 
-
+    
+    //flashcards
     this.myFlashcardsStream = new BehaviorSubject<String>("");
 
     const queryStream: Observable<Query> = Observable.combineLatest<Query>(

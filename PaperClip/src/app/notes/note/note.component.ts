@@ -4,6 +4,7 @@ import { AuthService } from "app/services/auth.service";
 import { NoteService } from "app/services/note.service";
 import { MdDialogConfig, MdDialog } from "@angular/material";
 import { NoteDialogComponent } from "app/notes/note-dialog/note-dialog.component";
+import { DeleteType, DeleteDialogComponent } from "app/delete-dialog/delete-dialog.component";
 
 export enum EditMode {
   notEditable = 0,
@@ -36,6 +37,10 @@ export class NoteComponent implements OnInit {
     } else {
       this.isFavorited = false;
     }
+
+    if (this.note.favoriteBy == undefined) {
+      this.note.favoriteBy = {};
+    }
   }
 
   toggleFavorite(): void {
@@ -45,11 +50,7 @@ export class NoteComponent implements OnInit {
     updateNote.title = this.note.title;
     updateNote.uid = this.note.uid;
     updateNote.favoriteBy = this.note.favoriteBy;
-    console.log(updateNote.uid);
     if (this.isFavorited) {
-      // if (updateNote.favoriteBy) {
-      //   updateNote.favoriteBy = {};
-      // }
       updateNote.favoriteBy[this.authService.currentUserUid] = true;
     } else {
       updateNote.favoriteBy[this.authService.currentUserUid] = false;
@@ -65,8 +66,13 @@ export class NoteComponent implements OnInit {
   }
 
   remove(): void {
-    // TODO add delete dialog
-    this.noteService.remove(this.note.$key);
+    const dialogConfig = new MdDialogConfig();
+    dialogConfig.data = {
+      keyToRemove: this.note.$key,
+      deleteType: DeleteType.note,
+      dialogMsg: 'You cannot undo this!'
+    }
+    this.dialog.open(DeleteDialogComponent, dialogConfig);
   }
 
 }

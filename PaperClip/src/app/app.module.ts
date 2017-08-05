@@ -103,6 +103,7 @@ export const MaterialModules = [
   entryComponents: [
     NoteDialogComponent,
     FlashcardDialogComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

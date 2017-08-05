@@ -8,14 +8,11 @@ import { FlashcardService, FlashcardGroupRoute } from "app/services/flashcard.se
   styleUrls: ['./flashcard-list.component.scss']
 })
 export class FlashcardListComponent implements OnInit {
-  flashcards:string[];
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService) { }
 
   ngOnInit() {
-
-    this.flashcards   = ['1', '2', '3', '4'];
-    this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.myflashcards);
+    this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.all);
   }
 
 }

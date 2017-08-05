@@ -1,3 +1,10 @@
-<p>
-  delete-dialog works!
-</p>
+<h1 md-dialog-title> Are you sure to delete this? </h1>
+<md-dialog-content>
+  {{dialogMsg}}
+</md-dialog-content>
+
+<md-dialog-actions fxLayoutAlign="end center">
+  <button md-button type="button" md-dialog-close>Cancel</button>
+  <button md-button type="button" color="warn" (click)="delete()">Delete</button>
+</md-dialog-actions>
+
