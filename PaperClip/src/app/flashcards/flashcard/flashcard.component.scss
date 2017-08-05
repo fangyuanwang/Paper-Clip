@@ -15,7 +15,7 @@
 // .container-back {
 //     transform: rotateY(180deg);
 // }
-.testing {
+.rotate-container {
   margin: 10px;
   width: 300px;
   height: 160px;
@@ -42,10 +42,10 @@
   }
 }
 
-.testing:hover>.container-front {
+.rotate-container:hover>.container-front {
   transform: perspective(600px) rotateY(-180deg);
 }
 
-.testing:hover>.container-back {
+.rotate-container:hover>.container-back {
   transform: perspective(600px) rotateY(0deg);
 }
