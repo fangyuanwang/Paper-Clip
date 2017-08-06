@@ -1,6 +1,4 @@
 [md-dialog-title] {
-    font-size: 24px;
-    font-weight: normal;
     color: #444;
     padding: 0 10px;
 }
@@ -8,8 +6,7 @@
 form {
     width: auto;
     md-dialog-content {
-        overflow: hidden;
-        width: 350px;
+        overflow: auto;
 
         md-input-container {
             width: 100%;

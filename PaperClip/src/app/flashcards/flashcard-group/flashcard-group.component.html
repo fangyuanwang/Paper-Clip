@@ -1,4 +1,4 @@
-<md-card >
+<md-card fxFlex="300px" fxFlex.md="250px" fxFlex.gt-md="300px" fxFlex.xs="140px">
   <!-- Need router link with flash card group key  -->
   <!-- [routerLink]="['/flashcard-list', flashcardKey]" -->
   <md-card-title>
@@ -6,7 +6,7 @@
   </md-card-title>
 
   <md-card-content fxLayout="column" fxLayoutAlign="none stretch">
-    {{flashcardGroup.desc}}
+    <p class="flashcard-content">{{flashcardGroup.desc}}</p>
   </md-card-content>
 
   <md-card-actions fxLayout="row">

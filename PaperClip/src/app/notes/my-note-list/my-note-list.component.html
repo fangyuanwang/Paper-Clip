@@ -3,7 +3,7 @@
   <span fxFlex></span>
   <button md-raised-button (click)="showNoteDialog()" color="accent">Add a new note</button>
 </div>
-<md-grid-list [cols]="2" gutterSize="10px" rowHeight="200px">
+<md-grid-list [cols]="3" gutterSize="10px" rowHeight="200px">
   <md-grid-tile *ngFor="let note of (noteService.notesStream | async)">
     <app-note [note]=note></app-note>
   </md-grid-tile>

@@ -5,7 +5,7 @@
     Add a New Flashcard
   </button>
 </div>
-<md-grid-list [cols]="2" gutterSize="10px" rowHeight="200px">
+<md-grid-list [cols]="3" gutterSize="10px" rowHeight="200px">
   <md-grid-tile *ngFor="let flashcardGroup of (flashcardService.flashcardGroupStream | async)">
     <app-flashcard-group [flashcardGroup]=flashcardGroup></app-flashcard-group>
   </md-grid-tile>
