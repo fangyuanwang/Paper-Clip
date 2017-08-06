@@ -1,15 +1,14 @@
 <md-card fxFlex="300px" fxFlex.md="250px" fxFlex.gt-md="300px" fxFlex.xs="140px">
-  <!-- Need router link with flash card group key  -->
-  <!-- [routerLink]="['/flashcard-list', flashcardKey]" -->
   <md-card-title>
     {{flashcardGroup.title}}
   </md-card-title>
 
   <md-card-content fxLayout="column" fxLayoutAlign="none stretch">
-    <p class="flashcard-content">{{flashcardGroup.desc}}</p>
+    <p class="flashcard-content">{{displayContent}}</p>
   </md-card-content>
 
   <md-card-actions fxLayout="row">
+    <button md-button [routerLink]="['/flashcard-list', flashcardGroup.$key]">Detail</button>
     <span fxFlex></span> 
     <button md-icon-button *ngIf="editingMode==1" (click)="showEditDialog()"><md-icon>edit</md-icon></button>
     <button md-icon-button *ngIf="editingMode==1" (click)="remove()"><md-icon>delete</md-icon></button>

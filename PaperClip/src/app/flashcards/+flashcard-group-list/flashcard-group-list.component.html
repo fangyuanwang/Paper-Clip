@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="none center">
+  <h1>{{flashcardGroup.title}}</h1>
+  <span fxFlex></span>
+  <div fxLayout="row"  *ngIf="flashcardGroup.uid==authService.currentUserUid;else favoriteTemplate" fxLayoutAlign="">
+    <button color="accent" md-raised-button (click)="addFlashcard()" style="margin-right: 10px;">
+      Add a New Flashcard
+    </button>
+    <button color="accent" md-raised-button (click)="showEditDialog()">
+      Edit
+    </button>
+  </div>
+
+  <ng-template #favoriteTemplate>
+    <button color="accent" md-raised-button (click)="toggleFavorite()" *ngIf="!isFavorited;else unfavoriteTemplate">
+      Add to favorites
+    </button>
+    <ng-template #unfavoriteTemplate>
+      <button color="accent" md-raised-button (click)="toggleFavorite()">
+       Remove from favorites
+      </button>
+    </ng-template>
+  </ng-template>
+</div>
+
+<h3> {{flashcardGroup.desc}}</h3>
+<md-grid-list [cols]="3" gutterSize="10px" rowHeight="200px">
+  <md-grid-tile *ngFor="let flashcard of (flashcardService.flashcardStream | async)">
+    <app-flashcard [flashcard]=flashcard></app-flashcard>
+  </md-grid-tile>
+</md-grid-list>
+

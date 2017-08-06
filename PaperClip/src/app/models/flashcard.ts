@@ -14,4 +14,11 @@ export class FlashCard extends FirebaseFlatSnapshot {
         this.uid = obj && obj.uid || '';
         this.groupKey = obj && obj.groupKey || '';
     }
+
+    setValue(flashcard: FlashCard): void {
+        this.front = flashcard.front;
+        this.back = flashcard.back;
+        this.uid = flashcard.uid;
+        this.groupKey = flashcard.groupKey;
+    }
 }

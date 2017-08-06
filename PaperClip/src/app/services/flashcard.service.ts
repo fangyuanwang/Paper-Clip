@@ -76,6 +76,10 @@ export class FlashcardService {
       });
   }
 
+  showFlashcardByGroupKey(groupKey: string): void {
+    this.myFlashcardsStream.next(groupKey);
+  }
+
   showMyFlashcardGroupRoute(route: FlashcardGroupRoute): void {
     this.myFlashcardsGroupRouteStream.next(route);
   }
@@ -91,8 +95,8 @@ export class FlashcardService {
     firebase.database().ref().child(this.flashcardsGroupPath).child(keyToRemove).remove();
   }
 
-  addFlashcard(key: string, flashcard: FlashCard): void {
-    firebase.database().ref().child(this.flashcardsPath).child(key).set(flashcard);
+  addFlashcard(flashcard: FlashCard): void {
+    firebase.database().ref().child(this.flashcardsPath).push(flashcard);
   }
   updateFlashcard(key: string, flashcard: FlashCard): void {
     firebase.database().ref().child(this.flashcardsPath).child(key).set(flashcard);

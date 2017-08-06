@@ -50,11 +50,12 @@ import { MyFavNoteListComponent } from './notes/my-fav-note-list/my-fav-note-lis
 import { MyFlashcardListComponent } from './flashcards/my-flashcard-list/my-flashcard-list.component';
 import { MyFavFlashcardListComponent } from './flashcards/my-fav-flashcard-list/my-fav-flashcard-list.component';
 import { FlashcardGroupComponent } from './flashcards/flashcard-group/flashcard-group.component';
-import { FlashcardGroupListComponent } from './+flashcard-group-list/flashcard-group-list.component';
+import { FlashcardGroupListComponent } from './flashcards/+flashcard-group-list/flashcard-group-list.component';
 import { NoteDialogComponent } from './notes/note-dialog/note-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
-import { FlashcardDialogComponent } from './flashcards/flashcard-dialog/flashcard-dialog.component';
+import { FlashcardGroupDialogComponent } from './flashcards/flashcard-group-dialog/flashcard-group-dialog.component';
 import { NoteDisplayDialogComponent } from './notes/note-display-dialog/note-display-dialog.component';
+import { FlashcardDialogComponent } from './flashcards/flashcard-dialog/flashcard-dialog.component';
 
 export const MaterialModules = [
   MdAutocompleteModule,
@@ -99,14 +100,16 @@ export const MaterialModules = [
     FlashcardGroupListComponent,
     NoteDialogComponent,
     DeleteDialogComponent,
-    FlashcardDialogComponent,
+    FlashcardGroupDialogComponent,
     NoteDisplayDialogComponent,
+    FlashcardDialogComponent,
   ],
   entryComponents: [
     NoteDialogComponent,
-    FlashcardDialogComponent,
+    FlashcardGroupDialogComponent,
     DeleteDialogComponent,
-    NoteDisplayDialogComponent
+    NoteDisplayDialogComponent,
+    FlashcardDialogComponent
   ],
   imports: [
     BrowserModule,

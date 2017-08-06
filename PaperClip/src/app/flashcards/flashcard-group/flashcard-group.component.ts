@@ -6,7 +6,7 @@ import { EditMode } from 'app/notes/note/note.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { FlashcardService } from "app/services/flashcard.service";
 import { MdDialogConfig, MdDialog } from "@angular/material";
-import { FlashcardDialogComponent } from "app/flashcards/flashcard-dialog/flashcard-dialog.component";
+import { FlashcardGroupDialogComponent } from "app/flashcards/flashcard-group-dialog/flashcard-group-dialog.component";
 import { DeleteType, DeleteDialogComponent } from "app/delete-dialog/delete-dialog.component";
 
 @Component({
@@ -20,6 +20,7 @@ export class FlashcardGroupComponent implements OnInit {
   @Input() flashcardGroup: FlashCardGroup;
   editingMode = EditMode.notEditable;
   isFavorited: boolean;
+  displayContent: string;
 
   constructor(public authService: AuthService,
     private router: Router,
@@ -41,6 +42,12 @@ export class FlashcardGroupComponent implements OnInit {
     if (this.flashcardGroup.favoriteBy == undefined) {
       this.flashcardGroup.favoriteBy = {};
     }
+
+    if (this.flashcardGroup.desc.length > 29) {
+      this.displayContent = this.flashcardGroup.desc.substring(0, 25) + '...';
+    } else {
+      this.displayContent = this.flashcardGroup.desc;
+    }
   }
 
   toggleFavorite(): void {
@@ -59,7 +66,7 @@ export class FlashcardGroupComponent implements OnInit {
   showEditDialog(): void {
     const dialogConfig = new MdDialogConfig();
     dialogConfig.data = {flashcardGroup: this.flashcardGroup};
-    this.dialog.open(FlashcardDialogComponent, dialogConfig);
+    this.dialog.open(FlashcardGroupDialogComponent, dialogConfig);
   }
 
   remove(): void {

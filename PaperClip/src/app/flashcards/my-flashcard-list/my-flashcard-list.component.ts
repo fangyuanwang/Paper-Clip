@@ -1,4 +1,4 @@
-import { FlashcardDialogComponent } from './../flashcard-dialog/flashcard-dialog.component';
+import { FlashcardGroupDialogComponent } from './../flashcard-group-dialog/flashcard-group-dialog.component';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
@@ -22,7 +22,7 @@ export class MyFlashcardListComponent implements OnInit {
   showDialog() {
     const dialogConfig = new MdDialogConfig();
     dialogConfig.data = {};
-    this.dialog.open(FlashcardDialogComponent, dialogConfig);
+    this.dialog.open(FlashcardGroupDialogComponent, dialogConfig);
   }
 
 }
