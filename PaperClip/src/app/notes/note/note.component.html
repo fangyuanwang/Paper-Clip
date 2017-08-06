@@ -1,13 +1,14 @@
-<md-card class="container">
+<md-card class="container" fxFlex="300px" fxFlex.md="250px" fxFlex.gt-md="300px" fxFlex.xs="140px">
   <md-card-title>
     {{note.title}}
   </md-card-title>
 
   <md-card-content  fxLayout="column" fxLayoutAlign="none stretch">
-    <p class="note-content">{{note.content}}</p>
+    <p class="note-content">{{displayNoteContent}}</p>
   </md-card-content>
 
   <md-card-actions fxLayout="row">
+    <button md-button *ngIf="displayMore" (click)="showMore()">More</button>
     <span fxFlex></span> 
     <button md-icon-button *ngIf="editingMode==1" (click)="showEditDialog()"><md-icon>edit</md-icon></button>
     <button md-icon-button *ngIf="editingMode==1" (click)="remove()"><md-icon>delete</md-icon></button>

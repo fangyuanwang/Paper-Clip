@@ -1,6 +1,5 @@
-<h1>All</h1>
-<h5> These messages will be removed. This just displays for showing different routes</h5>
-<md-grid-list [cols]="2" gutterSize="5px" rowHeight="270px">
+<h1>All Notes</h1>
+<md-grid-list [cols]="3" gutterSize="5px" rowHeight="200px">
   <md-grid-tile *ngFor="let note of (noteService.notesStream | async)">
     <app-note [note]=note></app-note>
   </md-grid-tile>

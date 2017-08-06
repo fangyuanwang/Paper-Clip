@@ -1,4 +1,4 @@
-<h1>All</h1>
+<h1>All Flashcards</h1>
 <md-grid-list [cols]="2" gutterSize="10px" rowHeight="200px">
   <md-grid-tile *ngFor="let flashcardGroup of (flashcardService.flashcardGroupStream | async)">
     <app-flashcard-group [flashcardGroup]=flashcardGroup></app-flashcard-group>

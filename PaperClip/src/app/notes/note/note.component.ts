@@ -5,6 +5,7 @@ import { NoteService } from "app/services/note.service";
 import { MdDialogConfig, MdDialog } from "@angular/material";
 import { NoteDialogComponent } from "app/notes/note-dialog/note-dialog.component";
 import { DeleteType, DeleteDialogComponent } from "app/delete-dialog/delete-dialog.component";
+import { NoteDisplayDialogComponent } from "app/notes/note-display-dialog/note-display-dialog.component";
 
 export enum EditMode {
   notEditable = 0,
@@ -21,6 +22,8 @@ export class NoteComponent implements OnInit {
   isFavorited: boolean = false;
   @Input() note: Note;
   editingMode = EditMode.notEditable;
+  displayNoteContent: string;
+  displayMore = false;
 
   constructor(public authService: AuthService,
     public noteService: NoteService,
@@ -40,6 +43,13 @@ export class NoteComponent implements OnInit {
 
     if (this.note.favoriteBy == undefined) {
       this.note.favoriteBy = {};
+    }
+
+    if (this.note.content.length > 29) {
+      this.displayNoteContent = this.note.content.substring(0, 25) + '...';
+      this.displayMore = true;
+    } else {
+      this.displayNoteContent = this.note.content;
     }
   }
 
@@ -73,6 +83,12 @@ export class NoteComponent implements OnInit {
       dialogMsg: 'You cannot undo this!'
     }
     this.dialog.open(DeleteDialogComponent, dialogConfig);
+  }
+
+  showMore(): void {
+    const dialogConfig = new MdDialogConfig();
+    dialogConfig.data = {note: this.note};
+    this.dialog.open(NoteDisplayDialogComponent, dialogConfig);
   }
 
 }
