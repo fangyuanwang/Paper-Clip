@@ -1,4 +1,4 @@
-<img [routerLink]="['/', '']" routerLinkActive="active" src="./assets/img/logo2.jpg" id="logo">
+<img *ngIf="authService.isSignedInStream | async" [routerLink]="['/', '']" routerLinkActive="active" src="./assets/img/logo2.jpg" id="logo">
 
 <md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
   <button md-button [mdMenuTriggerFor]="AllMenu">All</button>

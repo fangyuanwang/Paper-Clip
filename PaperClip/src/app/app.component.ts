@@ -18,7 +18,6 @@ export class AppComponent {
     private afAuth: AngularFireAuth,
     public authService: AuthService
   ) {
-  
   }
 
   ngOnInit(): void {

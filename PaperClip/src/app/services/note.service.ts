@@ -21,6 +21,7 @@ export class NoteService {
   readonly notesPath = "notes";
   public myNotesRouteStream: Subject<NoteRoute>;
   public notesStream: Observable<Note[]>;
+  public mainPageNotesStream: Observable<Note[]>;
 
   constructor(private db: AngularFireDatabase,
     public authService: AuthService) { 
@@ -50,6 +51,9 @@ export class NoteService {
       .switchMap<Query, Note[]>( (queryPara: Query) => { 
         return this.db.list(this.notesPath, {query: queryPara});
      });
+
+    this.mainPageNotesStream = this.db.list(this.notesPath, 
+      {query: {limitToFirst: 3, orderByKey: true}});
   }
 
   showMyNotesRoute(route: NoteRoute): void {

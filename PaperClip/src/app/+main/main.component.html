@@ -1,18 +1,11 @@
-<p>
-  main works!
-  should we decide what to show? Notes or Flashcards or a little bit of both?
-  like a preview? 
-</p>
-
 <div>
-  <h2>Recent Notes</h2>
-  <div fxLayout="row">
-    <md-card>
-      <md-card-title>
-        Some notes card display here
-      </md-card-title>
-    </md-card>
-  </div><br>
+  <h1>Recent Notes</h1>
+  <md-grid-list [cols]="3" gutterSize="5px" rowHeight="200px">
+    <md-grid-tile *ngFor="let note of (noteService.mainPageNotesStream | async)">
+      <app-note [note]=note></app-note>
+    </md-grid-tile>
+  </md-grid-list>
+
   <div fxLayout="row">
     <span fxFlex></span>
     <button md-raised-button [routerLink]="['/note-list/all']">More...</button>
@@ -20,17 +13,14 @@
 </div>
 <br>
 <hr>
-
+<br>
 <div>
-  <h2>Recent Flashcards</h2>
-  <div fxLayout="row">
-    <md-card>
-      <md-card-title>
-        Some flashcard card display here
-      </md-card-title>
-    </md-card>
-  </div>
-  <br>
+  <h1>Recent Flashcards</h1>
+    <md-grid-list [cols]="3" gutterSize="5px" rowHeight="200px">
+      <md-grid-tile *ngFor="let flashcardGroup of (flashcardService.mainPageFlashcardGroupStream | async)">
+        <app-flashcard-group [flashcardGroup]=flashcardGroup></app-flashcard-group>
+      </md-grid-tile>
+    </md-grid-list>
   <div fxLayout="row">
     <span fxFlex></span>
     <button md-raised-button [routerLink]="['/flashcard-list/all']">More...</button>

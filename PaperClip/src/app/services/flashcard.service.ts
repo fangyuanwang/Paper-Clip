@@ -25,6 +25,7 @@ export class FlashcardService {
   public flashcardGroupStream: Observable<FlashCardGroup[]>;
   public flashcardStream: Observable<FlashCard[]>;
   public myFlashcardsStream: Subject<String>;
+  public mainPageFlashcardGroupStream: Observable<FlashCardGroup[]>;
 
   constructor(private db: AngularFireDatabase,
     public authService: AuthService) {
@@ -74,6 +75,9 @@ export class FlashcardService {
       .switchMap<Query, FlashCard[]>((queryPara: Query) => {
         return this.db.list(this.flashcardsPath, { query: queryPara });
       });
+
+    this.mainPageFlashcardGroupStream = this.db.list(this.flashcardsGroupPath, 
+      {query: {limitToFirst: 3, orderByKey: true}});
   }
 
   showFlashcardByGroupKey(groupKey: string): void {
