@@ -1,5 +1,5 @@
 import { FlashcardService, FlashcardGroupRoute } from 'app/services/flashcard.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EditMode } from 'app/notes/note/note.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase } from "angularfire2/database";
@@ -19,14 +19,21 @@ export class FlashcardGroupListComponent implements OnInit {
   groupKey: string;
   flashcardGroup: FlashCardGroup;
   isFavorited: boolean;
+  previousRoute: string;
  
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService,
     public db: AngularFireDatabase,
     public authService: AuthService,
-    private dialog: MdDialog) { }
+    private dialog: MdDialog,
+    private router: Router) { }
 
   ngOnInit() {
+    this.route.queryParams.filter((params) => params.previous)
+      .subscribe( (params) => { 
+        this.previousRoute = params.previous;
+       });
+
     this.route.params.subscribe( (routeParams: Params) => { 
       const groupKey = routeParams["groupKey"];
       this.groupKey = groupKey;
@@ -58,8 +65,6 @@ export class FlashcardGroupListComponent implements OnInit {
           this.flashcardGroup.favoriteBy = {};
         }
     });
-
-    console.log(this.flashcardGroup);
 
     if (this.flashcardGroup.favoriteBy && this.flashcardGroup.favoriteBy[this.authService.currentUserUid]) {
       this.isFavorited = true;
@@ -93,6 +98,10 @@ export class FlashcardGroupListComponent implements OnInit {
     const dialogConfig = new MdDialogConfig();
     dialogConfig.data = {groupKey: this.groupKey};
     this.dialog.open(FlashcardDialogComponent, dialogConfig);
+  }
+
+  back(): void {
+    this.router.navigate([`/flashcard-list/${this.previousRoute}`])
   }
 
 }

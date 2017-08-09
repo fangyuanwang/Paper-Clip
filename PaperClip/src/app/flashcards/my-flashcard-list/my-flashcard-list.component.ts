@@ -10,6 +10,8 @@ import { FlashcardService, FlashcardGroupRoute } from "app/services/flashcard.se
   styleUrls: ['./my-flashcard-list.component.scss']
 })
 export class MyFlashcardListComponent implements OnInit {
+
+  currentRoute = 'myflashcards';
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService,
     private dialog: MdDialog) {

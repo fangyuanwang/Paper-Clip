@@ -1,6 +1,6 @@
 import { AuthService } from './../../services/auth.service';
 import { FlashCardGroup } from './../../models/flashcard-group';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params, NavigationExtras } from '@angular/router';
 import { FlashCard } from './../../models/flashcard';
 import { EditMode } from 'app/notes/note/note.component';
 import { Component, OnInit, Input } from '@angular/core';
@@ -18,6 +18,7 @@ export class FlashcardGroupComponent implements OnInit {
 
   flashcardKey: string;
   @Input() flashcardGroup: FlashCardGroup;
+  @Input() previousRoute: string;
   editingMode = EditMode.notEditable;
   isFavorited: boolean;
   displayContent: string;
@@ -77,5 +78,13 @@ export class FlashcardGroupComponent implements OnInit {
       dialogMsg: 'You cannot undo this! You will lose all flashcards that belong to this!'
     }
     this.dialog.open(DeleteDialogComponent, dialogConfig);
+  }
+
+  navigateToDetailPage(): void {
+    const params: NavigationExtras = {
+      queryParams: { 'previous': this.previousRoute},
+    }
+
+    this.router.navigate([`/flashcard-list/${this.flashcardGroup.$key}`], params);
   }
 }

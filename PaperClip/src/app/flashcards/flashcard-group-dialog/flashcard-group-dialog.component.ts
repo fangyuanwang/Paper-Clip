@@ -28,7 +28,7 @@ export class FlashcardGroupDialogComponent implements OnInit {
 
   ngOnInit() {
     if (this.dialogData.flashcardGroup) {
-      this.title = 'Edit this flashcard group.';
+      this.title = 'Edit this flashcard group';
       this.formFlashcardGroup.setValue(this.dialogData.flashcardGroup);
     }
   }

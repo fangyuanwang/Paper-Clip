@@ -8,6 +8,7 @@ import { FlashcardService, FlashcardGroupRoute } from "app/services/flashcard.se
   styleUrls: ['./flashcard-list.component.scss']
 })
 export class FlashcardListComponent implements OnInit {
+  currentRoute = 'all';
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService) { }
 

@@ -9,6 +9,7 @@ import { FlashcardGroupRoute, FlashcardService } from "app/services/flashcard.se
 })
 export class MyFavFlashcardListComponent implements OnInit {
   flashcards:string[];
+  currentRoute = 'myfavorites';
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService) { }
 

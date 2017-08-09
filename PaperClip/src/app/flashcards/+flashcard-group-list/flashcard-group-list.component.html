@@ -2,23 +2,25 @@
   <h1>{{flashcardGroup.title}}</h1>
   <span fxFlex></span>
   <div fxLayout="row"  *ngIf="flashcardGroup.uid==authService.currentUserUid;else favoriteTemplate" fxLayoutAlign="">
-    <button color="accent" md-raised-button (click)="addFlashcard()" style="margin-right: 10px;">
-      Add a New Flashcard
+    <button color="accent" md-icon-button (click)="addFlashcard()">
+      <md-icon>add</md-icon>
     </button>
-    <button color="accent" md-raised-button (click)="showEditDialog()">
-      Edit
+    <button color="accent" md-icon-button (click)="showEditDialog()" *ngIf="flashcardGroup.uid==authService.currentUserUid">
+      <md-icon>edit</md-icon>
     </button>
+    <button color="accent" md-icon-button (click)="back()"><md-icon>arrow_back</md-icon></button>
   </div>
 
   <ng-template #favoriteTemplate>
-    <button color="accent" md-raised-button (click)="toggleFavorite()" *ngIf="!isFavorited;else unfavoriteTemplate">
-      Add to favorites
+    <button color="accent" md-icon-button (click)="toggleFavorite()" *ngIf="!isFavorited;else unfavoriteTemplate">
+      <md-icon>favorite_border</md-icon>
     </button>
     <ng-template #unfavoriteTemplate>
-      <button color="accent" md-raised-button (click)="toggleFavorite()">
-       Remove from favorites
+      <button color="accent" md-icon-button (click)="toggleFavorite()">
+       <md-icon>favorite</md-icon>
       </button>
     </ng-template>
+    <button color="accent" md-icon-button (click)="back()"><md-icon>arrow_back</md-icon></button>
   </ng-template>
 </div>
 
