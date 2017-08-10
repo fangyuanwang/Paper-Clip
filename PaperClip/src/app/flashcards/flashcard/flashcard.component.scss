@@ -4,7 +4,7 @@
   width: 300px;
   height: 160px;
   float: left;
-  >.container-front {
+  .container-front {
     position: absolute;
     transform: perspective(600px) rotateY(0deg);
     // background: #FC0;
@@ -13,7 +13,7 @@
     backface-visibility: hidden;
     transition: transform .5s linear 0s;
   }
-  >.container-back {
+  .container-back {
     position: absolute;
     transform: perspective(600px) rotateY(180deg);
     // background: lightblue;
