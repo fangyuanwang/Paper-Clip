@@ -12,7 +12,8 @@ import { AuthService } from "app/services/auth.service";
 })
 export class AppComponent {
   showSignOut = false;
-  private authStateSubscription: Subscription;
+  isBlueGrayTheme = false;
+
 
   constructor(
     private afAuth: AngularFireAuth,

@@ -1,43 +1,51 @@
-<img *ngIf="authService.isSignedInStream | async" [routerLink]="['/', '']" routerLinkActive="active" src="./assets/img/logo2.jpg" id="logo">
+<div [class.blue-gray-theme]="isBlueGrayTheme">
+  <img *ngIf="authService.isSignedInStream | async" [routerLink]="['/', '']" routerLinkActive="active" src="./assets/img/logo2.jpg" id="logo">
+  <md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
+    <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
+    <md-menu [overlapTrigger]="false" #AllMenu="mdMenu">
+      <button md-menu-item [routerLink]="['/note-list/all']"
+              routerLinkActive="active">Notes</button>
+      <button md-menu-item [routerLink]="['/flashcard-list/all']"
+              routerLinkActive="active">Flashcards</button>
+    </md-menu>
 
-<md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
-  <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
-  <md-menu [overlapTrigger]="false" #AllMenu="mdMenu">
-    <button md-menu-item [routerLink]="['/note-list/all']"
-            routerLinkActive="active">Notes</button>
-    <button md-menu-item [routerLink]="['/flashcard-list/all']"
-            routerLinkActive="active">Flashcards</button>
-  </md-menu>
+    <button md-button [mdMenuTriggerFor]="MyMenu">My Stuff</button>
+    <md-menu [overlapTrigger]="false" #MyMenu="mdMenu">
+      <button md-menu-item [routerLink]="['/note-list/mynotes']"
+              routerLinkActive="active">Notes</button>
+      <button md-menu-item [routerLink]="['/flashcard-list/myflashcards']"
+              routerLinkActive="active">Flashcards</button>
+    </md-menu>
 
-  <button md-button [mdMenuTriggerFor]="MyMenu">My Stuff</button>
-  <md-menu [overlapTrigger]="false" #MyMenu="mdMenu">
-    <button md-menu-item [routerLink]="['/note-list/mynotes']"
-            routerLinkActive="active">Notes</button>
-    <button md-menu-item [routerLink]="['/flashcard-list/myflashcards']"
-            routerLinkActive="active">Flashcards</button>
-  </md-menu>
+    <button md-button [mdMenuTriggerFor]="MyFavoriteMenu">My Favorites</button>
+    <md-menu [overlapTrigger]="false" #MyFavoriteMenu="mdMenu">
+      <button md-menu-item [routerLink]="['/note-list/myfavorites']"
+              routerLinkActive="active">Notes</button>
+      <button md-menu-item [routerLink]="['/flashcard-list/myfavorites']"
+              routerLinkActive="active">Flashcards</button>
+    </md-menu>
 
-  <button md-button [mdMenuTriggerFor]="MyFavoriteMenu">My Favorites</button>
-  <md-menu [overlapTrigger]="false" #MyFavoriteMenu="mdMenu">
-    <button md-menu-item [routerLink]="['/note-list/myfavorites']"
-            routerLinkActive="active">Notes</button>
-    <button md-menu-item [routerLink]="['/flashcard-list/myfavorites']"
-            routerLinkActive="active">Flashcards</button>
-  </md-menu>
+    <span fxFlex></span>
+    {{authService.displayNameStream | async}}
+    <button md-icon-button [mdMenuTriggerFor]="signOutMenu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu [overlapTrigger]="false" #signOutMenu="mdMenu">
+      <button md-menu-item>
+        <md-icon>color_lens</md-icon>
+        <span> Theme</span>
+      </button>
+      <button md-menu-item (click)="isBlueGrayTheme=!isBlueGrayTheme;">Change Theme</button>
 
-  <span fxFlex></span>
-  {{authService.displayNameStream | async}}
-  <button md-icon-button [mdMenuTriggerFor]="signOutMenu">
-    <md-icon>more_vert</md-icon>
-  </button>
-  <md-menu [overlapTrigger]="false" #signOutMenu="mdMenu">
-    <button md-menu-item>Settings</button>
-    <button md-menu-item (click)="authService.signOut()">Sign Out</button>
-  </md-menu>
-</md-toolbar>
+      <hr>
+      <button md-menu-item (click)="authService.signOut()">Sign Out</button>
+    </md-menu>
+  </md-toolbar>
 
-<div fxLayoutAlign="center center">
-  <div class="container" fxFlex fxFlex.md="960px" fxFlex.gt-md="1100px">
-    <router-outlet></router-outlet>
+  <div fxLayoutAlign="center center">
+    <div class="container" fxFlex fxFlex.md="960px" fxFlex.gt-md="1100px">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
 </div>
