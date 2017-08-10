@@ -2,13 +2,14 @@ $horz-padding: 30px;
 md-card {
   md-card-title {
     padding: 15px $horz-padding;
-    background-color: #5c88ce;
+    background: #5c88ce;
     margin: 0;
     color: white;
-    h2 {
+    h1 {
       margin: 0;
       color: white;
       font-weight: normal;
+      text-align: center;
     }
   }
   md-card-content {
@@ -16,7 +17,7 @@ md-card {
     font-size: 18px;
 
     #rose-button {
-      background-color: rgba(0, 100, 250, 0.7);
+      background-color: rgba(0, 85, 255, 0.75);
       color: white;
       font-size: 16px;
       margin: 10px;

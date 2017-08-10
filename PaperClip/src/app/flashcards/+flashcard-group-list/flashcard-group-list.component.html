@@ -8,7 +8,7 @@
     <button color="accent" md-icon-button (click)="showEditDialog()" *ngIf="flashcardGroup.uid==authService.currentUserUid">
       <md-icon>edit</md-icon>
     </button>
-    <button color="accent" md-icon-button (click)="back()"><md-icon>arrow_back</md-icon></button>
+    <button color="accent" md-icon-button (click)="back()"><md-icon>arrow_forward</md-icon></button>
   </div>
 
   <ng-template #favoriteTemplate>
@@ -20,7 +20,7 @@
        <md-icon>favorite</md-icon>
       </button>
     </ng-template>
-    <button color="accent" md-icon-button (click)="back()"><md-icon>arrow_back</md-icon></button>
+    <button color="accent" md-icon-button (click)="back()"><md-icon>arrow_forward</md-icon></button>
   </ng-template>
 </div>
 
