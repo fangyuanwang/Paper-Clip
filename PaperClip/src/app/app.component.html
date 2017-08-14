@@ -1,4 +1,4 @@
-<div [class.blue-gray-theme]="isBlueGrayTheme">
+<div [class.blue-gray-theme]="(currentTheme|async)==1" [class.pink-theme]="(currentTheme|async)==2" [class.teal-theme]="(currentTheme|async)==3">
   <img *ngIf="authService.isSignedInStream | async" [routerLink]="['/', '']" routerLinkActive="active" src="./assets/img/logo2.jpg" id="logo">
   <md-toolbar color="primary"  *ngIf="authService.isSignedInStream | async">
     <button md-button [mdMenuTriggerFor]="AllMenu">All</button>
@@ -31,12 +31,14 @@
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu [overlapTrigger]="false" #signOutMenu="mdMenu">
-      <button md-menu-item>
+      <button md-menu-item color="warn">
         <md-icon>color_lens</md-icon>
         <span> Theme</span>
       </button>
-      <button md-menu-item (click)="isBlueGrayTheme=!isBlueGrayTheme;">Change Theme</button>
-
+      <button md-menu-item class="indigoButton" (click)="setToDefaultTheme()">Indigo (Default)</button>
+      <button md-menu-item class="blueGrayButton" (click)="setToBlueGrayTheme()">BlueGray</button>
+      <button md-menu-item class="pinkButton" (click)="setToPinkTheme()">Pink</button>
+      <button md-menu-item class="tealButton" (click)="setToTealTheme()">Teal</button>
       <hr>
       <button md-menu-item (click)="authService.signOut()">Sign Out</button>
     </md-menu>

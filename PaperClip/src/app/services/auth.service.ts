@@ -62,7 +62,6 @@ export class AuthService {
   signInWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result: any) => {
-        console.log("hello");
         this.router.navigate(['/']);
         const user: firebase.User = result.user;
       });
