@@ -25,47 +25,52 @@ export class AppComponent implements OnInit, OnDestroy{
   showSignOut = false;
 
   readonly themePath = 'themes';
-  private themeSubscription: Subscription;
-  currentTheme: Subject<ThemeType>;
+  currentTheme: Subject<Number>;
+  themeStream: Observable<Number>;
+  themeObservable: FirebaseObjectObservable<Number>;
+  private signedInSubscription: Subscription;
 
   constructor(
     private afAuth: AngularFireAuth,
     public authService: AuthService,
     private db: AngularFireDatabase,
   ) {
-    this.currentTheme = new BehaviorSubject<ThemeType>(ThemeType.indigo);
-    
+    this.currentTheme = new BehaviorSubject<Number>(0);
   }
 
   ngOnInit(): void {
-    firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).once('value',  (snapshot: firebase.database.DataSnapshot) => {
-      console.log(snapshot.val()); 
-      if (snapshot.val()) {
-        this.currentTheme.next(snapshot.val());
+    this.signedInSubscription = this.authService.isSignedInStream.subscribe( (isSignedIn: boolean) => { 
+      if (isSignedIn) {
+        firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).on('value',  (snapshot: firebase.database.DataSnapshot) => {
+          if (snapshot.val() >= 0) {
+            this.currentTheme.next(snapshot.val());
+          } else {
+            firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).set(0);
+          }
+        });
       }
     });
   }
 
   ngOnDestroy(): void {
+    this.signedInSubscription.unsubscribe();
+    firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).off();
   }
 
   setToDefaultTheme() {
-    this.currentTheme.next(ThemeType.indigo);
+    // this.currentTheme.next(0);
     firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).set(0);
   }
 
   setToBlueGrayTheme() {
-    this.currentTheme.next(ThemeType.blugray);
     firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).set(1);
   }
 
   setToPinkTheme() {
-    this.currentTheme.next(ThemeType.pink);
     firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).set(2);
   }
 
   setToTealTheme() {
-    this.currentTheme.next(ThemeType.teal);
     firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).set(3);
   }
 

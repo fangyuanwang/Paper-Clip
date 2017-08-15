@@ -31,11 +31,11 @@
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu [overlapTrigger]="false" #signOutMenu="mdMenu">
-      <button md-menu-item color="warn">
-        <md-icon>color_lens</md-icon>
+      <button md-menu-item>
+        <md-icon >color_lens</md-icon>
         <span> Theme</span>
       </button>
-      <button md-menu-item class="indigoButton" (click)="setToDefaultTheme()">Indigo (Default)</button>
+      <button md-menu-item class="indigoButton" (click)="setToDefaultTheme()">Indigo</button>
       <button md-menu-item class="blueGrayButton" (click)="setToBlueGrayTheme()">BlueGray</button>
       <button md-menu-item class="pinkButton" (click)="setToPinkTheme()">Pink</button>
       <button md-menu-item class="tealButton" (click)="setToTealTheme()">Teal</button>
