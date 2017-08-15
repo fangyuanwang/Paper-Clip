@@ -1,5 +1,5 @@
 <h1>All Notes</h1>
-<md-grid-list [cols]="3" gutterSize="5px" rowHeight="200px">
+<md-grid-list [cols]="numColumns" gutterSize="5px" rowHeight="200px">
   <md-grid-tile *ngFor="let note of (noteService.notesStream | async)">
     <app-note [note]=note></app-note>
   </md-grid-tile>

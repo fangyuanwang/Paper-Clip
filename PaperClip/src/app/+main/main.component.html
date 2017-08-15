@@ -1,6 +1,6 @@
 <div>
   <h1>Recent Notes</h1>
-  <md-grid-list [cols]="3" gutterSize="5px" rowHeight="200px">
+  <md-grid-list [cols]="numColumns" gutterSize="5px" rowHeight="200px">
     <md-grid-tile *ngFor="let note of (noteService.mainPageNotesStream | async)">
       <app-note [note]=note></app-note>
     </md-grid-tile>
@@ -16,7 +16,7 @@
 <br>
 <div>
   <h1>Recent Flashcards</h1>
-    <md-grid-list [cols]="3" gutterSize="5px" rowHeight="200px">
+    <md-grid-list [cols]="numColumns" gutterSize="5px" rowHeight="200px">
       <md-grid-tile *ngFor="let flashcardGroup of (flashcardService.mainPageFlashcardGroupStream | async)">
         <app-flashcard-group [flashcardGroup]=flashcardGroup></app-flashcard-group>
       </md-grid-tile>

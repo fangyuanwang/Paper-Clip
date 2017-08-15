@@ -10,13 +10,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
 $candy-app-primary: mat-palette($mat-indigo);
-
-// The warn palette is optional (defaults to red).
-$candy-app-warn:    mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
+$candy-app-accent:  mat-palette($mat-deep-purple);
+$candy-app-warn:   mat-palette($mat-blue);
 $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 
 // Include theme styles for core and each component used in your app.
@@ -27,8 +23,8 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 
 // Define an alternate dark theme.
 $blue-gray-primary: mat-palette($mat-blue-grey);
-$blue-gray-accent:  mat-palette($mat-light-blue, A200, A100, A400);
-$blue-gray-warn:    mat-palette($mat-red);
+$blue-gray-accent:  mat-palette($mat-brown);
+$blue-gray-warn:    mat-palette($mat-grey);
 $blue-gray-theme:   mat-light-theme($blue-gray-primary, $blue-gray-accent, $blue-gray-warn);
 
 // Include the alternative theme styles inside of a block with a CSS class. You can make this
@@ -39,7 +35,7 @@ $blue-gray-theme:   mat-light-theme($blue-gray-primary, $blue-gray-accent, $blue
 }
 
 $pink-primary: mat-palette($mat-pink);
-$pink-accent:  mat-palette($mat-indigo, A200, A100, A400);
+$pink-accent:  mat-palette($mat-red);
 $pink-warn:   mat-palette($mat-red);
 $pink-theme:   mat-light-theme($pink-primary, $pink-accent, $pink-warn);
 
@@ -51,8 +47,9 @@ $pink-theme:   mat-light-theme($pink-primary, $pink-accent, $pink-warn);
 }
 
 $teal-primary: mat-palette($mat-teal);
-$teal-accent:  mat-palette($mat-blue, A200, A100, A400);
-$teal-warn:   mat-palette($mat-red);
+$teal-accent:  mat-palette($mat-green);
+$teal-warn:   mat-palette($mat-green);
+$teal-danger: mat-palette($mat-green);
 $teal-theme:   mat-light-theme($teal-primary, $teal-accent, $teal-warn);
 
 // Include the alternative theme styles inside of a block with a CSS class. You can make this

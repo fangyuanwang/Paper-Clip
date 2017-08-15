@@ -15,5 +15,15 @@ export class FlashcardListComponent implements OnInit {
   ngOnInit() {
     this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.all);
   }
-
+  get numColumns(): number {
+    if (window.innerWidth < 500) {
+      return 1;
+    } else if (window.innerWidth < 900) {
+      return 2;
+    } else if (window.innerWidth < 1300) {
+      return 3;
+    } else {
+      return 4;
+    }
+  }
 }

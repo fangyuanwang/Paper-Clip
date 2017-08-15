@@ -25,7 +25,7 @@
 </div>
 
 <h3> {{flashcardGroup.desc}}</h3>
-<md-grid-list [cols]="3" gutterSize="10px" rowHeight="200px">
+<md-grid-list [cols]="numColumns" gutterSize="10px" rowHeight="200px">
   <md-grid-tile *ngFor="let flashcard of (flashcardService.flashcardStream | async)">
     <app-flashcard [flashcard]=flashcard></app-flashcard>
   </md-grid-tile>

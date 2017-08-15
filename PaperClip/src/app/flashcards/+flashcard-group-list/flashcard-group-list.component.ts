@@ -20,7 +20,7 @@ export class FlashcardGroupListComponent implements OnInit {
   flashcardGroup: FlashCardGroup;
   isFavorited: boolean;
   previousRoute: string;
- 
+
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService,
     public db: AngularFireDatabase,
@@ -30,14 +30,14 @@ export class FlashcardGroupListComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.filter((params) => params.previous)
-      .subscribe( (params) => { 
+      .subscribe((params) => {
         this.previousRoute = params.previous;
-       });
+      });
 
-    this.route.params.subscribe( (routeParams: Params) => { 
+    this.route.params.subscribe((routeParams: Params) => {
       const groupKey = routeParams["groupKey"];
       this.groupKey = groupKey;
-     });
+    });
 
     this.flashcardGroup = new FlashCardGroup();
     this.flashcardGroup.$key = this.groupKey;
@@ -45,17 +45,17 @@ export class FlashcardGroupListComponent implements OnInit {
     firebase.database().ref(`flashcards-group/${this.groupKey}/title`).on('value',
       (snapshot: firebase.database.DataSnapshot) => {
         this.flashcardGroup.title = snapshot.val();
-    });
-    
+      });
+
     firebase.database().ref(`flashcards-group/${this.groupKey}/desc`).on('value',
       (snapshot: firebase.database.DataSnapshot) => {
         this.flashcardGroup.desc = snapshot.val();
-    });
+      });
 
     firebase.database().ref(`flashcards-group/${this.groupKey}/uid`).on('value',
       (snapshot: firebase.database.DataSnapshot) => {
         this.flashcardGroup.uid = snapshot.val();
-    });
+      });
 
     firebase.database().ref(`flashcards-group/${this.groupKey}/favoriteBy`).on('value',
       (snapshot: firebase.database.DataSnapshot) => {
@@ -64,7 +64,7 @@ export class FlashcardGroupListComponent implements OnInit {
         } else {
           this.flashcardGroup.favoriteBy = {};
         }
-    });
+      });
 
     if (this.flashcardGroup.favoriteBy && this.flashcardGroup.favoriteBy[this.authService.currentUserUid]) {
       this.isFavorited = true;
@@ -73,6 +73,17 @@ export class FlashcardGroupListComponent implements OnInit {
     }
 
     this.flashcardService.showFlashcardByGroupKey(this.groupKey);
+  }
+  get numColumns(): number {
+    if (window.innerWidth < 500) {
+      return 1;
+    } else if (window.innerWidth < 900) {
+      return 2;
+    } else if (window.innerWidth < 1300) {
+      return 3;
+    } else {
+      return 4;
+    }
   }
 
   toggleFavorite(): void {
@@ -90,13 +101,13 @@ export class FlashcardGroupListComponent implements OnInit {
 
   showEditDialog(): void {
     const dialogConfig = new MdDialogConfig();
-    dialogConfig.data = {flashcardGroup: this.flashcardGroup};
+    dialogConfig.data = { flashcardGroup: this.flashcardGroup };
     this.dialog.open(FlashcardGroupDialogComponent, dialogConfig);
   }
 
   addFlashcard(): void {
     const dialogConfig = new MdDialogConfig();
-    dialogConfig.data = {groupKey: this.groupKey};
+    dialogConfig.data = { groupKey: this.groupKey };
     this.dialog.open(FlashcardDialogComponent, dialogConfig);
   }
 

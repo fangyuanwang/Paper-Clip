@@ -26,7 +26,7 @@
     </md-menu>
 
     <span fxFlex></span>
-    {{authService.displayNameStream | async}}
+    <div fxShow.xs="false" fxShow="true" >{{authService.displayNameStream | async}} </div>
     <button md-icon-button [mdMenuTriggerFor]="signOutMenu">
       <md-icon>more_vert</md-icon>
     </button>
