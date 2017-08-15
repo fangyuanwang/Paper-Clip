@@ -14,6 +14,8 @@ import { NoteService } from "app/services/note.service";
 })
 export class MainComponent implements OnInit {
 
+  currentRoute = '/';
+
   constructor(public flashcardService: FlashcardService,
     public noteService: NoteService) {
   }
