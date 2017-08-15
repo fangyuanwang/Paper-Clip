@@ -1,28 +1,24 @@
 md-card {
-    margin: 10px 10px;
-    overflow: hidden;
-    md-card-title {
-        padding: 5px 5px;
-        margin: 0;
-
-            h2 {
-            margin: 0;
-            color: white;
-            font-weight: normal;
-            }
-        }
-
-    md-card-content {
-        padding: 5px 5px;
-        margin-bottom: 5px;
+  margin: 10px 10px;
+  overflow: hidden;
+  md-card-title {
+    padding: 5px 5px;
+    margin: 0;
+    h2 {
+      margin: 0;
+      color: white;
+      font-weight: normal;
     }
-
-    md-card-actions {
-        padding: 0;
-    }
-
-    .flashcard-content {
-        width: 100%;
-        word-wrap: break-word;
-    }
+  }
+  md-card-content {
+    padding: 5px 5px;
+    margin-bottom: 5px;
+  }
+  md-card-actions {
+    padding: 0;
+  }
+  .flashcard-content {
+    width: 100%;
+    word-wrap: break-word;
+  }
 }

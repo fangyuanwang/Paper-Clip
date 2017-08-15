@@ -79,10 +79,8 @@ export class FlashcardGroupListComponent implements OnInit {
       return 1;
     } else if (window.innerWidth < 900) {
       return 2;
-    } else if (window.innerWidth < 1300) {
-      return 3;
     } else {
-      return 4;
+      return 3;
     }
   }
 
