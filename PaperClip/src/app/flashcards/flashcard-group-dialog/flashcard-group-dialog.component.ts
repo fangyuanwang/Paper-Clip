@@ -16,6 +16,7 @@ interface FlashcardGroupDialogData {
 export class FlashcardGroupDialogComponent implements OnInit {
   formFlashcardGroup: FlashCardGroup;
   title = "Add a new flashcard group";
+
   constructor(
     private dialogRef: MdDialogRef<FlashcardGroupDialogComponent>,
     @Inject(MD_DIALOG_DATA) private dialogData: FlashcardGroupDialogData,
@@ -32,6 +33,7 @@ export class FlashcardGroupDialogComponent implements OnInit {
       this.formFlashcardGroup.setValue(this.dialogData.flashcardGroup);
     }
   }
+  
   onSubmit() {
     try {
       if (this.dialogData.flashcardGroup) {

@@ -9,13 +9,6 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { AngularFireDatabase, FirebaseObjectObservable } from "angularfire2/database";
 import { Observable } from "rxjs/Observable";
 
-enum ThemeType {
-  indigo = 0,
-  blugray = 1,
-  pink = 2,
-  teal = 3
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,8 +19,6 @@ export class AppComponent implements OnInit, OnDestroy{
 
   readonly themePath = 'themes';
   currentTheme: Subject<Number>;
-  themeStream: Observable<Number>;
-  themeObservable: FirebaseObjectObservable<Number>;
   private signedInSubscription: Subscription;
 
   constructor(
@@ -58,7 +49,6 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   setToDefaultTheme() {
-    // this.currentTheme.next(0);
     firebase.database().ref(`/${this.themePath}/${this.authService.currentUserUid}`).set(0);
   }
 

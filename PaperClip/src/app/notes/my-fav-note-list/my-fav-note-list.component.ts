@@ -19,6 +19,7 @@ export class MyFavNoteListComponent implements OnInit {
 
   ngOnDestroy() {
   }
+  
   get numColumns(): number {
     if (window.innerWidth < 500) {
       return 1;

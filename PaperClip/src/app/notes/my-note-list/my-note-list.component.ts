@@ -24,6 +24,7 @@ export class MyNoteListComponent implements OnInit {
     dialogConfig.data = {};
     this.dialog.open(NoteDialogComponent, dialogConfig);
   }
+  
   get numColumns(): number {
     if (window.innerWidth < 500) {
       return 1;

@@ -23,6 +23,7 @@ export class NoteListComponent implements OnInit, OnDestroy {
 
     this.noteService.showMyNotesRoute(NoteRoute.all);
   }
+  
   get numColumns(): number {
     if (window.innerWidth < 500) {
       return 1;

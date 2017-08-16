@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Merienda|Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Merienda');
 
 @import '~@angular/material/theming';
 
@@ -26,5 +26,4 @@ $custom-typography: mat-typography-config(
 body {
     margin: 0;
     background-color: whitesmoke;
-    font-family: 'Comfortaa', cursive;
 }

@@ -10,14 +10,14 @@ import { FlashcardGroupRoute, FlashcardService } from "app/services/flashcard.se
 export class MyFavFlashcardListComponent implements OnInit {
   flashcards:string[];
   currentRoute = 'myfavorites';
+
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService) { }
 
   ngOnInit() {
-
-    this.flashcards   = ['1', '2', '3', '4'];
     this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.myfavs);
   }
+  
   get numColumns(): number {
     if (window.innerWidth < 500) {
       return 1;

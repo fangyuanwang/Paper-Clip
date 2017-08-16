@@ -12,6 +12,7 @@ import { FlashcardService, FlashcardGroupRoute } from "app/services/flashcard.se
 export class MyFlashcardListComponent implements OnInit {
 
   currentRoute = 'myflashcards';
+  
   constructor(private route: ActivatedRoute,
     public flashcardService: FlashcardService,
     private dialog: MdDialog) {
@@ -21,11 +22,13 @@ export class MyFlashcardListComponent implements OnInit {
   ngOnInit() {
     this.flashcardService.showMyFlashcardGroupRoute(FlashcardGroupRoute.myflashcards);
   }
+
   showDialog() {
     const dialogConfig = new MdDialogConfig();
     dialogConfig.data = {};
     this.dialog.open(FlashcardGroupDialogComponent, dialogConfig);
   }
+
   get numColumns(): number {
     if (window.innerWidth < 500) {
       return 1;
