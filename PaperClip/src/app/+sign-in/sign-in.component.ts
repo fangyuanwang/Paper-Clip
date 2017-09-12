@@ -13,10 +13,14 @@ import { AuthService } from "app/services/auth.service";
 })
 export class SignInComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     var loc = window.location.pathname;
+    if (this.authService.isSignedInStream) {
+      this.router.navigate(['/']);
+    }
   }
 
   
